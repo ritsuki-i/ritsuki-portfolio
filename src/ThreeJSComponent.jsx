@@ -39,15 +39,15 @@ export default function ThreeJSComponent() {
     // // マテリアルにテクスチャーを設定
     const loadPic = new THREE.TextureLoader();
     let material1 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/python-logo.png"),
+        map: loadPic.load("/textures/python-logo.png"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/python-logo.png"),
+        map: loadPic.load("/textures/python-logo.png"),
       }),
     ];
     let material2 = [
