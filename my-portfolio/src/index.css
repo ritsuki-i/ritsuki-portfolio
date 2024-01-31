@@ -1,0 +1,5 @@
+/* 共通部分 */
+body {
+  font-family: "コーポレート明朝 ver2";
+  background: linear-gradient(rgb(255, 157, 0), white, white, white, white, rgb(255, 157, 0));
+}
