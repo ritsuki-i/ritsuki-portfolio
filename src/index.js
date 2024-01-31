@@ -11,12 +11,12 @@ import Notfound from "./Notfound.jsx";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/ritsuki-portfolio">
       <Routes>
-        <Route path="/ritsuki-portfolio/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="application" element={<Application />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="/application" element={<Application />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </Router>
