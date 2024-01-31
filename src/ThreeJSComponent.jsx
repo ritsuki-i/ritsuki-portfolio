@@ -52,96 +52,96 @@ export default function ThreeJSComponent() {
     ];
     let material2 = [
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("./textures/flask.png"),
+        map: loadPic.load("/textures/flask.png"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("./textures/flask.png"),
+        map: loadPic.load("/textures/flask.png"),
       }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material3 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/github.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/github.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/github.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/github.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material4 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/html.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/html.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/html.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/html.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material5 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/css.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/css.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/css.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/css.png") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material6 = [
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/vscode.jpeg"),
+        map: loadPic.load("/textures/vscode.jpeg"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/vscode.jpeg"),
+        map: loadPic.load("/textures/vscode.jpeg"),
       }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material7 = [
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/Three.js.png"),
+        map: loadPic.load("/textures/Three.js.png"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/Three.js.png"),
+        map: loadPic.load("/textures/Three.js.png"),
       }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material8 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/unity.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/unity.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/unity.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/unity.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
     let material9 = [
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/pytorch.jpg"),
+        map: loadPic.load("/textures/pytorch.jpg"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/pytorch.jpg"),
+        map: loadPic.load("/textures/pytorch.jpg"),
       }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
 
     let material10 = [
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/react.png"),
+        map: loadPic.load("/textures/react.png"),
       }),
       new THREE.MeshBasicMaterial({
-        map: loadPic.load("textures/react.png"),
+        map: loadPic.load("/textures/react.png"),
       }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
+      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
     ];
 
     // メッシュを作成
