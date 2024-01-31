@@ -13,11 +13,26 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/application" element={<Application />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Notfound />} />
+        <Route
+          path="https://ritsuki-i.github.io/ritsuki-portfolio/"
+          element={<Home />}
+        />
+        <Route
+          path="https://ritsuki-i.github.io/ritsuki-portfolio/about"
+          element={<About />}
+        />
+        <Route
+          path="https://ritsuki-i.github.io/ritsuki-portfolio/application"
+          element={<Application />}
+        />
+        <Route
+          path="https://ritsuki-i.github.io/ritsuki-portfolio/contact"
+          element={<Contact />}
+        />
+        <Route
+          path="https://ritsuki-i.github.io/ritsuki-portfolio/*"
+          element={<Notfound />}
+        />
       </Routes>
     </Router>
   </React.StrictMode>
