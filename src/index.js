@@ -14,15 +14,15 @@ root.render(
     <Router>
       <Routes>
         <Route
-          path="https://ritsuki-i.github.io/ritsuki-portfolio/"
+          path="./"
           element={<Home />}
         />
         <Route
-          path="https://ritsuki-i.github.io/ritsuki-portfolio/about"
+          path="./about"
           element={<About />}
         />
         <Route
-          path="https://ritsuki-i.github.io/ritsuki-portfolio/application"
+          path="/ritsuki-portfolio/application"
           element={<Application />}
         />
         <Route
@@ -30,7 +30,7 @@ root.render(
           element={<Contact />}
         />
         <Route
-          path="https://ritsuki-i.github.io/ritsuki-portfolio/*"
+          path="*"
           element={<Notfound />}
         />
       </Routes>
