@@ -14,19 +14,19 @@ root.render(
     <Router>
       <Routes>
         <Route
-          path="./"
+          path="/"
           element={<Home />}
         />
         <Route
-          path="./about"
+          path="/about"
           element={<About />}
         />
         <Route
-          path="/ritsuki-portfolio/application"
+          path="application"
           element={<Application />}
         />
         <Route
-          path="https://ritsuki-i.github.io/ritsuki-portfolio/contact"
+          path="contact"
           element={<Contact />}
         />
         <Route
