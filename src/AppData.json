@@ -1,0 +1,29 @@
+{
+  "apps": [
+    {
+      "name": "COOK_WITH",
+      "url": "https://cw.pythonanywhere.com/",
+      "path": "img/cookwith-icon.png",
+      "script": "欲しい栄養素からレシピを検索できるwebアプリケーション"
+    },
+    {
+      "name": "おじさん構文翻訳AI",
+      "url": "https://oji.pythonanywhere.com/",
+      "path": "img/ojitrans-icon.png",
+      "script": "AIを用いて「標準語⇄おじさん構文」の翻訳をすることができるwebアプリケーション"
+    },
+    {
+      "name": "魔女見習いまじか♡マジカ",
+      "url": "https://ritsuki-i.github.io/unitygame/",
+      "path": "img/unitygameicon.jpeg",
+      "script": "ゲームエンジンUnityで作られたWeb2Dアクションゲーム"
+    },
+    {
+      "name": "-G-性格ぴったりグループ生成アプリ",
+      "url": "https://g-xing-ge-pitsutarigurupusheng-cheng.onrender.com/",
+      "path": "img/Gwebapp.png",
+      "script": "MBTIの相性から最適なグルーピングができるwebアプリケーション"
+    }
+    
+  ]
+}

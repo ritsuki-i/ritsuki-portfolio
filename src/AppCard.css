@@ -1,0 +1,158 @@
+.col-sm-4 a {
+    color: black;
+    text-decoration: none;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.app-card {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+.app-card {
+    margin-top: 10vh;
+    width: 25vw;
+    height: 60vh;
+    background-color: rgba(255, 255, 255, 0.204);
+    border-radius: 1.5em;
+    transition: transform .4s;
+}
+
+.app-card img {
+    border-radius: 1.5em;
+}
+
+.app-card p {
+    margin-top: 20px;
+    height: 60px;
+    font-size: 2vh;
+}
+
+.app-card:hover {
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.my-4 {
+    padding: 10px;
+}
+
+.long {
+    box-sizing: border-box;
+}
+
+.play-btn {
+    font-family: "コーポレート明朝 ver2";
+    border-radius: 10%;
+    font-size: 20px;
+    margin-top: 1vh;
+    margin-right: 20px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: color .4s;
+    transition: background-color .4s;
+}
+.play-btn:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+@media screen and (min-width: 960px) {
+    .app-card img {
+        height: 20vh;
+    }
+}
+
+@media screen and (min-width: 520px) and (max-width: 960px) {
+    .app-card {
+        margin-top: 5vh;
+        width: 90vw;
+        height: 40vw;
+        margin-left: 0vw;
+        margin-left: 0vw;
+    }
+
+    .app-card img {
+        width: 30vw;
+        float: left;
+    }
+
+    .app-card h5 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .app-card p {
+        height: 10px;
+        margin-top: 0px;
+        font-size: 3vw;
+    }
+
+    .row {
+        display: block;
+    }
+
+    .main {
+        margin-left: 1rem;
+    }
+
+    .play-btn {
+        margin-top: 10vw;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .app-card {
+        margin-top: 5vh;
+        width: 90vw;
+        height: 40vw;
+        margin-left: 0vw;
+        margin-left: 0vw;
+    }
+
+    .app-card img {
+        width: 35vw;
+        float: left;
+    }
+
+    .app-card h5 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .app-card p {
+        height: 10px;
+        margin-top: 5vw;
+        font-size: 10px;
+    }
+
+    .long {
+        font-size: 4vw;
+    }
+
+    .play-btn {
+        font-size: 10px;
+    }
+
+    .row {
+        display: block;
+    }
+
+    .main {
+        margin-left: 1rem;
+    }
+
+    .play-btn {
+        margin-top: 8vw;
+        height: auto;
+    }
+
+    
+}
