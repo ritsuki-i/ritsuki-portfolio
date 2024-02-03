@@ -1,0 +1,17 @@
+.main {
+    height: auto;
+    margin-top: 70px;
+    margin-left: 5em;
+}
+
+@media screen and (min-width: 520px) and (max-width: 960px) {
+    .main {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .main {
+        margin-left: 1rem;
+    }
+}

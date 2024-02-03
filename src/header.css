@@ -1,149 +1,195 @@
 .header {
-    height: 90px;
+  height: 90px;
+}
+
+.activeLink {
+  color: rgb(0, 0, 0);
 }
 
 .header-logo {
-    color: black;
-    float: left;
-    font-size: 30px;
-    padding: 20px 40px;
+  color: black;
+  float: left;
+  font-size: 30px;
+  padding: 20px 40px;
 }
 
 /* ハンバーガーメニュー */
 .nav_toggle {
-    position: fixed;
-    right: 0px;
-    margin: 30px 20px;
-    display: block;
-    width: 1.75rem;
-    height: 1.5rem;
+  position: fixed;
+  right: 0px;
+  margin: 30px 20px;
+  display: block;
+  width: 1.75rem;
+  height: 1.5rem;
 }
 
 .nav_toggle i {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #333;
-    position: absolute;
-    transition: transform .5s, opacity .5s;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
 .nav_toggle i:nth-child(1) {
-    top: 0;
+  top: 0;
 }
 
 .nav_toggle i:nth-child(2) {
-    top: 0;
-    bottom: 0;
-    margin: auto;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .nav_toggle i:nth-child(3) {
-    bottom: 0;
+  bottom: 0;
 }
 
 .nav_toggle.show i:nth-child(1) {
-    transform: translateY(10px) rotate(-45deg);
+  transform: translateY(10px) rotate(-45deg);
 }
 
 .nav_toggle.show i:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .nav_toggle.show i:nth-child(3) {
-    transform: translateY(-12px) rotate(45deg);
+  transform: translateY(-12px) rotate(45deg);
 }
 
 .nav {
-    background-color: rgba(0, 0, 0, 0.648);
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 1rem;
-    opacity: 0;
-    visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.648);
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .nav_menu_ul a {
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    transition: transform .4s;
+  font-size: 20px;
+  text-decoration: none;
+  transition: transform 0.4s;
 }
 
 .nav_menu_li {
-    list-style: none;
-    margin-top: 20px;
+  list-style: none;
+  margin-top: 20px;
 }
 
-.nav_menu_ul a:hover {
-    color: rgba(124, 124, 124, 0.548);
+.nav_menu_li a{
+  position: relative;
+  padding-left: 10px;
 }
 
+.nav_menu_li a:before {
+  content: "";
+  position: absolute;
+  top: 0.45em;
+  left: -20px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 5px;
+  height: 5px;
+}
+
+.nav_inactive {
+  color: rgb(255, 255, 255);
+}
+.nav_inactive:before {
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+}
+
+.nav_active {
+  color: rgb(167, 167, 167);
+}
+.nav_active:before {
+  border-top: 2px solid rgb(167, 167, 167);
+  border-right: 2px solid rgb(167, 167, 167);
+}
+
+.nav_inactive:hover {
+  color: rgb(167, 167, 167);
+}
+.nav_inactive:before:hover {
+  border-top: 2px solid rgb(167, 167, 167);
+  border-right: 2px solid rgb(167, 167, 167);
+}
 
 .header-menu a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.338);
-    transition: color .4s;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.inactive {
+  color: rgba(0, 0, 0, 0.338);
+}
+
+.active {
+  color: rgb(0, 0, 0);
 }
 
 .header-menu a:hover {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 .header-menu li {
-    float: left;
-    padding: 33px 20px;
-    list-style: none;
+  float: left;
+  padding: 33px 20px;
+  list-style: none;
 }
 
 @media screen and (min-width: 960px) {
-    .name {
-        display: flex;
-    }
+  .name {
+    display: flex;
+  }
 
-    .hamburger-menu {
-        display: none;
-    }
+  .hamburger-menu {
+    display: none;
+  }
 }
 @media screen and (min-width: 520px) and (max-width: 960px) {
-    .header-menu {
-        display: none;
-    }
+  .header-menu {
+    display: none;
+  }
 
-    .header-logo {
-        font-size: 25px;
-    }
+  .header-logo {
+    font-size: 25px;
+  }
 
-    .header {
-        height: 40px;
-    }
-    .main {
-        margin-left: 1rem;
-    }
+  .header {
+    height: 40px;
+  }
+  .main {
+    margin-left: 1rem;
+  }
 }
 
 @media screen and (max-width: 520px) {
-    .title {
-        font-size: 20px;
-    }
+  .title {
+    font-size: 20px;
+  }
 
-    .header-menu {
-        display: none;
-    }
+  .header-menu {
+    display: none;
+  }
 
-    .header-logo {
-        font-size: 25px;
-    }
+  .header-logo {
+    font-size: 25px;
+  }
 
-    .header {
-        height: 40px;
-    }
- 
+  .header {
+    height: 40px;
+  }
 }

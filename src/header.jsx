@@ -15,7 +15,7 @@ function header() {
         <div className="header-logo">Ritsuki Ishikawa</div>
       </a>
       <div className="hamburger-menu">
-        <span class="nav_toggle" onClick={ShowHambuegermenu}>
+        <span className="nav_toggle" onClick={ShowHambuegermenu}>
           <i></i>
           <i></i>
           <i></i>
@@ -23,16 +23,16 @@ function header() {
         <nav className="nav">
           <ul className="nav_menu_ul">
             <li className="nav_menu_li">
-              <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/">Home</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'nav_active' : 'nav_inactive')} to="/">Home</NavLink>
             </li>
             <li className="nav_menu_li">
-              <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/about">About</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'nav_active' : 'nav_inactive')} to="/about">About</NavLink>
             </li>
             <li className="nav_menu_li">
-              <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/application">Applications</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'nav_active' : 'nav_inactive')} to="/application">Applications</NavLink>
             </li>
             <li className="nav_menu_li">
-              <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/contact">Contact</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'nav_active' : 'nav_inactive')} to="/contact">Contact</NavLink>
             </li>
           </ul>
         </nav>
@@ -40,16 +40,16 @@ function header() {
       <div className="header-menu">
         <ul>
           <li>
-            <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/">Home</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/about">About</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/about">About</NavLink>
           </li>
           <li>
-            <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/application">Applications</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/application">Applications</NavLink>
           </li>
           <li>
-            <NavLink style={({ active }) => (active ? { color: "color: rgb(0, 0, 0);" } : undefined)} to="/contact">Contact</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/contact">Contact</NavLink>
           </li>
         </ul>
       </div>

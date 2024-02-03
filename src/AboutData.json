@@ -1,0 +1,64 @@
+{
+  "School": [
+    {
+      "Year": "2016-2022",
+      "Content": "神奈川県立平塚中等教育学校"
+    },
+    {
+      "Year": "2022-",
+      "Content": "青山学院大学理工学部情報テクノロジー学科"
+    }
+  ],
+  "Qualification": [
+    {
+      "Year": "2022 Jun",
+      "Content": "ITパスポート"
+    },
+    {
+      "Year": "2022 Nov",
+      "Content": "基本情報技術者"
+    },
+    {
+      "Year": "2023 Mar",
+      "Content": "JDLA Deep Learning for GENERAL"
+    }
+  ],
+  "Works": [
+    {
+      "Year": "2023 Sep",
+      "Content": "日本バーチャルリアリティ学会 IVRC 2023 SEED STAGE Diver-X賞受賞"
+    },
+    {
+      "Year": "2023 Sep",
+      "Content": "日本バーチャルリアリティ学会 IVRC 2023 SEED STAGE ソリッドレイ賞受賞"
+    },
+    {
+      "Year": "2023 Nov",
+      "Content": "日本バーチャルリアリティ学会 IVRC 2023 LEAP STAGE 観客大賞受賞"
+    }
+  ],
+  "Application": [
+    {
+      "Year": "2022 Aug",
+      "Content": "COOK_WITH"
+    },
+    {
+      "Year": "2023 Feb",
+      "Content": "おじさん構文翻訳AI"
+    },
+    {
+      "Year": "2023 Mar",
+      "Content": "魔女見習いまじか♡マジカ"
+    },
+    {
+      "Year": "2024 Jan",
+      "Content": "-G-性格ぴったりグループ生成アプリ"
+    }
+  ],
+  "Systems": [
+    {
+      "Year": "2023 Sep",
+      "Content": "Creating-stylish-pigeons"
+    }
+  ]
+}

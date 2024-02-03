@@ -1,3 +1,8 @@
+.title {
+    padding-left: 0.3em;
+    border-left: 0.3em solid rgb(0, 0, 0);
+}
+
 .col-sm-4 a {
     color: black;
     text-decoration: none;
@@ -109,6 +114,10 @@
 }
 
 @media screen and (max-width: 520px) {
+    .title {
+        font-size: 20px;
+    }
+
     .app-card {
         margin-top: 5vh;
         width: 90vw;

@@ -9,7 +9,7 @@
     {
       "name": "おじさん構文翻訳AI",
       "url": "https://oji.pythonanywhere.com/",
-      "path": "img/ojitrans-icon.png",
+      "path": "img/ojitrans.jpg",
       "script": "AIを用いて「標準語⇄おじさん構文」の翻訳をすることができるwebアプリケーション"
     },
     {
