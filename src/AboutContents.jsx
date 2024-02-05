@@ -1,6 +1,6 @@
 import React from 'react'
 import "./AboutContents.css";
-import AboutData from "./AboutData.json";
+import AboutData from "./Data/AboutData.json";
 
 export default function AboutContents() {
   return (
@@ -19,19 +19,21 @@ export default function AboutContents() {
         <div className={category} key={c_index}>
           <h1 className="title">{category}</h1>
           <table className="about-table">
-            <tr className="about-table-title">
-              <td className="about-table-title-year">year</td>
-              <td className="about-table-contents"></td>
-            </tr>
-            {AboutData[category].map((item, i_index) => (
-              <tr
-                className="about-table-line"
-                key={"" + c_index + "-" + i_index}
-              >
-                <td className="about-table-title-year">{item.Year}</td>
-                <td className="about-table-contents">{item.Content}</td>
+            <tbody>
+              <tr className="about-table-title">
+                <td className="about-table-year">year</td>
+                <td className="about-table-contents"></td>
               </tr>
-            ))}
+              {AboutData[category].map((item, i_index) => (
+                <tr
+                  className="about-table-line"
+                  key={"" + c_index + "-" + i_index}
+                >
+                  <td className="about-table-year">{item.Year}</td>
+                  <td className="about-table-contents">{item.Content}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       ))}

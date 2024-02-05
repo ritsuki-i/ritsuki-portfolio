@@ -20,7 +20,7 @@ export default function Contact() {
     return errors;
   };
 
-  
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -52,12 +52,21 @@ export default function Contact() {
         body: postData,
         headers: { "Content-Type": "application/json" },
       });
-      console.log("success");
+      
+
+      const json = await res.json();
+
+      if (json.success) {
+        console.log("success");
+        alert("送信完了しました。お問い合わせありがとうございます。");
+      } else {
+        console.log("error");
+      }
+
     } catch (e) {
       console.log("An error occurred", e);
     }
 
-    alert("送信完了しました。お問い合わせありがとうございます。");
   };
 
   //入力データをローカルストレージに保存

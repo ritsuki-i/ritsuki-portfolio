@@ -1,0 +1,49 @@
+{
+  "tecs": [
+    {
+      "name": "Python",
+      "path": "textures/side.jpeg",
+      "size": 150
+    },
+    {
+      "name": "Flask",
+      "path": "textures/flask.png",
+      "size": 100
+    },
+    {
+      "name": "GitHub",
+      "path": "textures/github.png",
+      "size": 60
+    },
+    {
+      "name": "HTML",
+      "path": "textures/html.png",
+      "size": 80
+    },
+    {
+      "name": "CSS",
+      "path": "textures/css.png",
+      "size": 70
+    },
+    {
+      "name": "Three.js",
+      "path": "textures/Three.js.png",
+      "size": 50
+    },
+    {
+      "name": "Unity",
+      "path": "textures/unity.jpeg",
+      "size": 50
+    },
+    {
+      "name": "Pytorch",
+      "path": "textures/pytorch.jpg",
+      "size": 60
+    },
+    {
+      "name": "React",
+      "path": "textures/react.png",
+      "size": 70
+    }
+  ]
+}

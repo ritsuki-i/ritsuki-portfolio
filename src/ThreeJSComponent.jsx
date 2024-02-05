@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
+import UsedTecs from "./Data/UsedTec.json";
 
 export default function ThreeJSComponent() {
   const canvasRef = useRef(null);
@@ -24,159 +25,56 @@ export default function ThreeJSComponent() {
     const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
     camera.position.set(0, 0, +1000);
 
-    // 立方体を作成
-    const geometry1 = new THREE.BoxGeometry(150, 150, 150);
-    const geometry2 = new THREE.BoxGeometry(100, 100, 100);
-    const geometry3 = new THREE.BoxGeometry(60, 60, 60);
-    const geometry4 = new THREE.BoxGeometry(80, 80, 80);
-    const geometry5 = new THREE.BoxGeometry(70, 70, 70);
-    const geometry6 = new THREE.BoxGeometry(70, 70, 70);
-    const geometry7 = new THREE.BoxGeometry(50, 50, 50);
-    const geometry8 = new THREE.BoxGeometry(50, 50, 50);
-    const geometry9 = new THREE.BoxGeometry(60, 60, 60);
-    const geometry10 = new THREE.BoxGeometry(70, 70, 70);
-
-    // // マテリアルにテクスチャーを設定
     const loadPic = new THREE.TextureLoader();
-    let material1 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/python-logo.png"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/python-logo.png"),
-      }),
-    ];
-    let material2 = [
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/flask.png"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/flask.png"),
-      }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material3 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/github.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/github.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material4 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/html.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/html.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material5 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/css.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/css.png") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material6 = [
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/vscode.jpeg"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/vscode.jpeg"),
-      }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material7 = [
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/Three.js.png"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/Three.js.png"),
-      }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material8 = [
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/unity.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/unity.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
-    let material9 = [
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/pytorch.jpg"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/pytorch.jpg"),
-      }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
 
-    let material10 = [
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/react.png"),
-      }),
-      new THREE.MeshBasicMaterial({
-        map: loadPic.load("/textures/react.png"),
-      }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-      new THREE.MeshBasicMaterial({ map: loadPic.load("/textures/side.jpeg") }),
-    ];
+    // 立方体を作成
+    let earthMesh = {}; // 空の連想配列を用意
+    const earthContainer = new THREE.Object3D(); // Object3D を作成
+    UsedTecs.tecs.map((tecs, index) => {
+      //マテリアルのサイズ設定
+      const geometry = new THREE.BoxGeometry(tecs.size, tecs.size, tecs.size);
+      // マテリアルにテクスチャーを設定
+      let material = [
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load("textures/side.jpeg"),
+        }),
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load("textures/side.jpeg"),
+        }),
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load("textures/side.jpeg"),
+        }),
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load("textures/side.jpeg"),
+        }),
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load(tecs.path),
+        }),
+        new THREE.MeshBasicMaterial({
+          map: loadPic.load(tecs.path),
+        }),
+      ];
 
-    // メッシュを作成
-    const earthMesh1 = new THREE.Mesh(geometry1, material1);
-    const earthMesh2 = new THREE.Mesh(geometry2, material2);
-    const earthMesh3 = new THREE.Mesh(geometry3, material3);
-    const earthMesh4 = new THREE.Mesh(geometry4, material4);
-    const earthMesh5 = new THREE.Mesh(geometry5, material5);
-    const earthMesh6 = new THREE.Mesh(geometry6, material6);
-    const earthMesh7 = new THREE.Mesh(geometry7, material7);
-    const earthMesh8 = new THREE.Mesh(geometry8, material8);
-    const earthMesh9 = new THREE.Mesh(geometry9, material9);
-    const earthMesh10 = new THREE.Mesh(geometry10, material10);
+      // メッシュを作成
+      const mesh = new THREE.Mesh(geometry, material);
 
-    earthMesh2.position.set(-100, -100, -500);
-    earthMesh3.position.set(90, 130, -70);
-    earthMesh4.position.set(350, 200, 350);
-    earthMesh5.position.set(-400, 60, -50);
-    earthMesh6.position.set(100, -100, 500);
-    earthMesh7.position.set(300, -250, -250);
-    earthMesh8.position.set(-300, 200, 250);
-    earthMesh9.position.set(450, 150, -100);
-    earthMesh10.position.set(-90, -150, 60);
+      //位置の座標の乱数
+      if (index === 0) {
+        mesh.position.set(0, 0, 0);
+      } else {
+        let rand1 = Math.floor(Math.random() * 800 - 400);
+        let rand2 = Math.floor(Math.random() * 800 - 400);
+        let rand3 = Math.floor(Math.random() * 800 - 400);
 
-    // 3D空間にメッシュを追加
-    scene.add(earthMesh1);
-    scene.add(earthMesh2);
-    scene.add(earthMesh3);
-    scene.add(earthMesh4);
-    scene.add(earthMesh5);
-    scene.add(earthMesh6);
-    scene.add(earthMesh7);
-    scene.add(earthMesh8);
-    scene.add(earthMesh9);
-    scene.add(earthMesh10);
+        mesh.position.set(rand1, rand2, rand3);
+      }
+      // Object3D に Mesh を追加
+      earthContainer.add(mesh);
+
+      return null;
+    });
+
+    scene.add(earthContainer); // シーンに Object3D を追加
 
     const directionalLight = new THREE.DirectionalLight(0xffffff);
     directionalLight.position.set(1, 1, 1);
@@ -215,59 +113,35 @@ export default function ThreeJSComponent() {
       // 原点方向を見つめる
       camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-      // 地球は常に回転させておく
-      earthMesh1.rotation.x += 0.005;
-      earthMesh1.rotation.y += 0.005;
-      earthMesh1.rotation.z += 0.005;
+      // マテリアルは常に回転させておく
+      for (let i = 0; i < earthMesh.length; i++) {
+        if (i === 0) {
+          earthMesh[i].rotation.x += 0.005;
+          earthMesh[i].rotation.y += 0.005;
+          earthMesh[i].rotation.z += 0.005;
+        } else {
+          let rand_speed1 = Math.random() * 0.4 - 0.2;
+          let rand_speed2 = Math.random() * 0.4 - 0.2;
+          let rand_speed3 = Math.random() * 0.4 - 0.2;
 
-      earthMesh2.rotation.x += 0.005;
-      earthMesh2.rotation.y += 0.001;
-      earthMesh2.rotation.z += 0.005;
+          earthContainer[i].rotation.x += rand_speed1;
+          earthContainer[i].rotation.y += rand_speed2;
+          earthContainer[i].rotation.z += rand_speed3;
+        }
+      }
 
-      earthMesh3.rotation.x -= 0.02;
-      earthMesh3.rotation.y += 0.002;
-      earthMesh3.rotation.z += 0.005;
-
-      earthMesh4.rotation.x += 0.003;
-      earthMesh4.rotation.y -= 0.003;
-      earthMesh4.rotation.z += 0.003;
-
-      earthMesh5.rotation.x -= 0.001;
-      earthMesh5.rotation.y += 0.001;
-      earthMesh5.rotation.z -= 0.001;
-
-      earthMesh6.rotation.x -= 0.001;
-      earthMesh6.rotation.y -= 0.001;
-      earthMesh6.rotation.z += 0.001;
-
-      earthMesh7.rotation.x -= 0.001;
-      earthMesh7.rotation.y -= 0.05;
-      earthMesh7.rotation.z -= 0.001;
-
-      earthMesh8.rotation.x -= 0.001;
-      earthMesh8.rotation.y -= 0.001;
-      earthMesh8.rotation.z -= 0.001;
-
-      earthMesh9.rotation.x -= 0.05;
-      earthMesh9.rotation.y -= 0.001;
-      earthMesh9.rotation.z -= 0.001;
-
-      earthMesh9.rotation.x -= 0.003;
-      earthMesh9.rotation.y -= 0.003;
-      earthMesh9.rotation.z -= 0.003;
       // レンダリング
       renderer.render(scene, camera);
 
       requestAnimationFrame(tick);
     };
-    
+
     tick();
 
     return () => {
       // コンポーネントのクリーンアップ時にイベントリスナーを削除
       window.removeEventListener("resize", onWindowResize);
     };
-    
   }, []);
 
   return (

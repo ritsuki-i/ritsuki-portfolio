@@ -89,4 +89,10 @@
         height: 50vw;
         padding-right: 0;
     }
+    .about-table-year{
+        font-size: 10px;
+    }
+    .about-table-contents {
+        font-size: 15px;
+    }
 }

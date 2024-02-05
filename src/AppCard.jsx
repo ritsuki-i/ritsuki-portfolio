@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./AppCard.css";
-import AppData from "./AppData.json";
+import AppData from "./Data/AppData.json";
 
 export default function AppCard() {
   const adjustFontSize = () => {
