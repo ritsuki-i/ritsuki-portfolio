@@ -20,3 +20,21 @@
     float: left;
     padding: 20px 40px;
 }
+
+.footer-index {
+    height: 80px;
+}
+
+.footer-index p {
+    float: left;
+    padding: 20px 40px;
+}
+
+@media screen and (max-width: 520px) {
+    .footer-index p{
+        padding: 0 40px;
+    }
+    .footer p {
+        padding: 0 40px;
+    }
+}

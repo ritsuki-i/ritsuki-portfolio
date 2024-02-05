@@ -1,0 +1,92 @@
+.myicon{
+    height: 250px;
+}
+.name{
+    justify-content: center;
+}
+.name img{
+    padding-right: 50px;
+}
+.name p{
+    font-size: 30px;
+    padding-left: 50px;
+    padding-right: 100px;
+}
+.about-table{
+    border-collapse:  collapse; 
+    table-layout: fixed;
+}
+.about-table-title{
+    border-bottom: solid 1px;
+}
+.about-table td{
+    font-size: 20px;
+}
+.about-table-title-year{
+    width: 15vw;
+    padding-left: 5vw;
+    font-weight: bold;
+}
+.about-table-year{
+    width: 15vw;
+    padding-left: 5vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+.about-table-contents{
+    width: 65vw;
+    padding-left: 5vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+.about-table-line{
+    transition: background-color .4s;
+}
+.about-table-line:hover {
+    background-color: rgba(0, 0, 0, 0.149);
+}
+@media screen and (min-width: 520px) and (max-width: 960px){
+    .about-table .about-table-contents {
+        font-size: 20px;
+    }
+    .name {
+        display: flex;
+        align-items: center;
+    }
+    .name div{
+        align-items: center;
+    }
+    .name img {
+        padding-right: 1vw;
+    }
+    .myicon {
+        margin-top: 25px;
+        height: 22vw;
+    }
+    
+    .name p {
+        font-size: 4vw;
+        padding-left: 1vw;
+        padding-right: 0px;
+    }
+}
+@media screen and (max-width: 520px) {
+    .about-table .about-table-year{
+        font-size: 10px;
+    }
+    .about-table .about-table-contents {
+        font-size: 15px;
+    }
+    .name p{
+        font-size: 5vw;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .name{
+        text-align: center;
+    }
+    .name img{
+        height: 50vw;
+        padding-right: 0;
+    }
+}

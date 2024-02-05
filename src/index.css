@@ -1,5 +1,23 @@
 /* 共通部分 */
 body {
   font-family: "コーポレート明朝 ver2";
-  background: linear-gradient(rgb(255, 157, 0), white, white, white, white, rgb(255, 157, 0));
+  background: linear-gradient(
+    rgb(255, 157, 0),
+    white,
+    white,
+    white,
+    white,
+    rgb(255, 157, 0)
+  );
+}
+
+.title {
+  padding-left: 0.3em;
+  border-left: 0.3em solid rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 520px) {
+  .title {
+    font-size: 20px;
+  }
 }
