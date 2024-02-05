@@ -82,9 +82,9 @@ export default function Contact() {
 
   //ページ起動時保存データを入力
   useEffect(() => {
-    let name_value = localStorage.setItem("name");
-    let email_value = localStorage.setItem("email");
-    let message_value = localStorage.setItem("message");
+    let name_value = localStorage.getItem("name");
+    let email_value = localStorage.getItem("email");
+    let message_value = localStorage.getItem("message");
 
     const name = document.getElementById("name");
     const email = document.getElementById("email");
