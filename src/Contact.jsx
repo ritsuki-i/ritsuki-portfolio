@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
 import "./Contact.css";
@@ -109,11 +109,6 @@ export default function Contact() {
             onSubmit={formik.handleSubmit}
             onChange={SaveLocalstrage}
           >
-            <input
-              type="hidden"
-              name="accessKey"
-              value="8a33a80c-6e03-421d-ac8b-44ae016c3e21"
-            />
             <div className="field">
               <label className="label-submit">お名前</label>
               <div className="control">
@@ -125,9 +120,10 @@ export default function Contact() {
               <div className="control">
                 <input
                   type="email"
+                  className="input"
                   name="email"
                   id="email"
-                  onChange={formik.handleChange}
+                  onChange={(formik.handleChange, handleSubmit)}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
                 />
@@ -144,12 +140,9 @@ export default function Contact() {
             </div>
             <div className="field">
               <div className="control">
-                <input
-                  type="submit"
-                  className="submit"
-                  value="送信する"
-                  onClick={handleSubmit}
-                />
+                <button type="submit" className="submit">
+                  送信する
+                </button>
                 <button className="button-reset" type="button" onClick={reset}>
                   リセット
                 </button>
