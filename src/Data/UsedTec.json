@@ -2,7 +2,7 @@
   "tecs": [
     {
       "name": "Python",
-      "path": "textures/side.jpeg",
+      "path": "textures/python-logo.png",
       "size": 150
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "name": "Three.js",
-      "path": "textures/Three.js.png",
+      "path": "textures/Threejs.png",
       "size": 50
     },
     {
