@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
 import "./Contact.css";
 import { useFormik } from "formik";
 
 export default function Contact() {
+  //入力情報の送信状態
+  const [isSent, setIsSent] = useState(false);
+  
+
   //入力情報が適しているか判別
   const validate = (values) => {
     const errors = {};
@@ -30,7 +35,15 @@ export default function Contact() {
 
   //入力情報の初期化
   const reset = () => {
-    document.contact.reset();
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    name.value = '';
+    email.value = '';
+    message.value = '';
+
+    SaveLocalstrage();
   };
 
   //入力データを転送
@@ -46,6 +59,10 @@ export default function Contact() {
       message: message.value,
     };
 
+    setIsSent(true);
+    console.log(postData);
+
+    /*
     try {
       const res = await fetch("https://api.staticforms.xyz/submit", {
         method: "POST",
@@ -58,14 +75,14 @@ export default function Contact() {
 
       if (json.success) {
         console.log("success");
-        alert("送信完了しました。お問い合わせありがとうございます。");
+        
       } else {
         console.log("error");
       }
 
     } catch (e) {
       console.log("An error occurred", e);
-    }
+    }*/
 
   };
 
@@ -103,10 +120,16 @@ export default function Contact() {
       <div className="main">
         <div className="contact">
           <h1 className="title">Contact</h1>
+          {isSent ? (
+            <div className="sentMessage">
+              <p>送信が完了しました。</p>
+              <NavLink to="/"><button>Homeに戻る</button></NavLink>
+            </div>
+          ):(
           <form
             action="https://api.staticforms.xyz/submit"
             method="post"
-            onSubmit={formik.handleSubmit}
+            onSubmit={handleSubmit}
             onChange={SaveLocalstrage}
           >
             <div className="field">
@@ -123,7 +146,7 @@ export default function Contact() {
                   className="input"
                   name="email"
                   id="email"
-                  onChange={(formik.handleChange, handleSubmit)}
+                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
                 />
@@ -150,6 +173,7 @@ export default function Contact() {
             </div>
             <input type="hidden" name="redirectTo" value="" />
           </form>
+          )}
         </div>
       </div>
       <Footer />
