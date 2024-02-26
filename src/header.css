@@ -2,10 +2,6 @@
   height: 90px;
 }
 
-.activeLink {
-  color: rgb(0, 0, 0);
-}
-
 .header-logo {
   color: black;
   float: left;

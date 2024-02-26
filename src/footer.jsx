@@ -1,7 +1,7 @@
 import React from 'react'
-import "./footer.css"
+import "./Footer.css"
 
-export default function footer() {
+export default function Footer() {
 
     const OpenQR = () =>{
         const QRchecked = document.getElementById("sitelink");
@@ -33,3 +33,4 @@ export default function footer() {
     </div>
   );
 }
+

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import Header from "./header.jsx";
-import Footer from "./footer.jsx";
 import "./Contact.css";
 import { useFormik } from "formik";
 
-export default function Contact() {
+export default function Contact({handleValueChange}) {
   //入力情報の送信状態
   const [isSent, setIsSent] = useState(false);
-  
 
   //入力情報が適しているか判別
   const validate = (values) => {
@@ -25,7 +21,6 @@ export default function Contact() {
     return errors;
   };
 
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -39,9 +34,9 @@ export default function Contact() {
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
-    name.value = '';
-    email.value = '';
-    message.value = '';
+    name.value = "";
+    email.value = "";
+    message.value = "";
 
     SaveLocalstrage();
   };
@@ -83,7 +78,6 @@ export default function Contact() {
     } catch (e) {
       console.log("An error occurred", e);
     }*/
-
   };
 
   //入力データをローカルストレージに保存
@@ -112,71 +106,77 @@ export default function Contact() {
     message.value = message_value;
   }, []);
 
-
-
   return (
     <div className="Contact">
-      <Header />
       <div className="main">
         <div className="contact">
           <h1 className="title">Contact</h1>
           {isSent ? (
             <div className="sentMessage">
               <p>送信が完了しました。</p>
-              <NavLink to="/"><button>Homeに戻る</button></NavLink>
+              <button onClick={() => handleValueChange("Home")}>
+                Homeに戻る
+              </button>
             </div>
-          ):(
-          <form
-            action="https://api.staticforms.xyz/submit"
-            method="post"
-            onSubmit={handleSubmit}
-            onChange={SaveLocalstrage}
-          >
-            <div className="field">
-              <label className="label-submit">お名前</label>
-              <div className="control">
-                <input className="input" type="text" id="name" required />
+          ) : (
+            <form
+              action="https://api.staticforms.xyz/submit"
+              method="post"
+              onSubmit={handleSubmit}
+              onChange={SaveLocalstrage}
+            >
+              <div className="field">
+                <label className="label-submit">お名前</label>
+                <div className="control">
+                  <input className="input" type="text" id="name" required />
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <label className="label-submit">メールアドレス</label>
-              <div className="control">
-                <input
-                  type="email"
-                  className="input"
-                  name="email"
-                  id="email"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.email}
-                />
-                {formik.touched.email && formik.errors.email ? (
-                  <span>{formik.errors.email}</span>
-                ) : null}
+              <div className="field">
+                <label className="label-submit">メールアドレス</label>
+                <div className="control">
+                  <input
+                    type="email"
+                    className="input"
+                    name="email"
+                    id="email"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                  />
+                  {formik.touched.email && formik.errors.email ? (
+                    <span>{formik.errors.email}</span>
+                  ) : null}
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <label className="label-submit">内容</label>
-              <div className="control">
-                <textarea className="textarea" id="message" required></textarea>
+              <div className="field">
+                <label className="label-submit">内容</label>
+                <div className="control">
+                  <textarea
+                    className="textarea"
+                    id="message"
+                    required
+                  ></textarea>
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <div className="control">
-                <button type="submit" className="submit">
-                  送信する
-                </button>
-                <button className="button-reset" type="button" onClick={reset}>
-                  リセット
-                </button>
+              <div className="field">
+                <div className="control">
+                  <button type="submit" className="submit">
+                    送信する
+                  </button>
+                  <button
+                    className="button-reset"
+                    type="button"
+                    onClick={reset}
+                  >
+                    リセット
+                  </button>
+                </div>
               </div>
-            </div>
-            <input type="hidden" name="redirectTo" value="" />
-          </form>
+              <input type="hidden" name="redirectTo" value="" />
+            </form>
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
