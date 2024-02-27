@@ -1,4 +1,4 @@
-.header {
+.Header {
   height: 90px;
 }
 
@@ -71,7 +71,7 @@
   visibility: visible;
 }
 
-.nav_menu_ul a {
+.nav_menu_ul{
   font-size: 20px;
   text-decoration: none;
   transition: transform 0.4s;
@@ -82,12 +82,12 @@
   margin-top: 20px;
 }
 
-.nav_menu_li a{
+.nav_menu_li{
   position: relative;
   padding-left: 10px;
 }
 
-.nav_menu_li a:before {
+.nav_menu_li:before {
   content: "";
   position: absolute;
   top: 0.45em;
@@ -99,26 +99,22 @@
   height: 5px;
 }
 
-.nav_inactive {
+.nav_menu_li {
   color: rgb(255, 255, 255);
 }
-.nav_inactive:before {
+.nav_menu_li:before {
   border-top: 2px solid #ffffff;
   border-right: 2px solid #ffffff;
 }
 
-.nav_active {
+.nav_menu_li:hover {
   color: rgb(167, 167, 167);
-}
-.nav_active:before {
-  border-top: 2px solid rgb(167, 167, 167);
-  border-right: 2px solid rgb(167, 167, 167);
 }
 
-.nav_inactive:hover {
+.nav_active{
   color: rgb(167, 167, 167);
 }
-.nav_inactive:before:hover {
+.nav_active:before{
   border-top: 2px solid rgb(167, 167, 167);
   border-right: 2px solid rgb(167, 167, 167);
 }
@@ -128,11 +124,11 @@
   transition: color 0.4s;
 }
 
-.inactive {
+.menu_li {
   color: rgba(0, 0, 0, 0.338);
 }
 
-.active {
+.menu_active{
   color: rgb(0, 0, 0);
 }
 
@@ -164,7 +160,7 @@
     font-size: 25px;
   }
 
-  .header {
+  .Header {
     height: 40px;
   }
   .main {
@@ -185,7 +181,7 @@
     font-size: 25px;
   }
 
-  .header {
+  .Header {
     height: 40px;
   }
 }

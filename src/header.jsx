@@ -1,10 +1,7 @@
 import React from "react";
 import "./Header.css";
-import { NavLink } from "react-router-dom";
 
-
-
-function Header({ handleValueChange }) {
+function Header({ handleValueChange, nowPage }) {
   const ShowHambuegermenu = () => {
     const Hambuegermenu = document.querySelector(".nav_toggle");
     const HambuegermenuElement = document.querySelector(".nav");
@@ -12,8 +9,36 @@ function Header({ handleValueChange }) {
     HambuegermenuElement.classList.toggle("show");
   };
 
+  const LoadMenu = () =>{
+    const navItems = ["Home", "About", "Application", "Contact"];
+    const navigation = navItems.map((item, index) => (
+      <li
+        key={index}
+        className={`menu_li ${nowPage === item ? "menu_active" : ""}`}
+        onClick={() => handleValueChange(item)}
+      >
+        {item}
+      </li>
+    ));
+    return navigation;
+  }
+
+  const LoadnavMenu = () => {
+    const navItems = ["Home", "About", "Application", "Contact"];
+    const navigation = navItems.map((item, index) => (
+      <li
+        key={index}
+        className={`nav_menu_li ${nowPage === item ? "nav_active" : ""}`}
+        onClick={() => handleValueChange(item)}
+      >
+        {item}
+      </li>
+    ));
+    return navigation;
+  };
+
   return (
-    <div className="header">
+    <div className="Header">
       <a onClick={() => handleValueChange("Home")}>
         <div className="header-logo">Ritsuki Ishikawa</div>
       </a>
@@ -24,37 +49,11 @@ function Header({ handleValueChange }) {
           <i></i>
         </span>
         <nav className="nav">
-          <ul className="nav_menu_ul">
-            <li className="nav_menu_li">
-              <NavLink onClick={(e) => handleValueChange("Home",e)}>Home</NavLink>
-            </li>
-            <li className="nav_menu_li">
-              <NavLink onClick={(e) => handleValueChange("About",e)}>About</NavLink>
-            </li>
-            <li className="nav_menu_li">
-              <NavLink onClick={(e) => handleValueChange("Application",e)}>Application</NavLink>
-            </li>
-            <li className="nav_menu_li">
-              <NavLink onClick={(e) => handleValueChange("Contact",e)}>Contact</NavLink>
-            </li>
-          </ul>
+          <ul className="nav_menu_ul">{LoadnavMenu()}</ul>
         </nav>
       </div>
       <div className="header-menu">
-        <ul>
-          <li>
-            <NavLink onClick={(e) => handleValueChange("Home",e)}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink onClick={(e) => handleValueChange("About",e)}>About</NavLink>
-          </li>
-          <li>
-            <NavLink onClick={(e) => handleValueChange("Application",e)}>Application</NavLink>
-          </li>
-          <li>
-            <NavLink onClick={(e) => handleValueChange("Contact",e)}>Contact</NavLink>
-          </li>
-        </ul>
+        <ul className="menu_ul">{LoadMenu()}</ul>
       </div>
     </div>
   );

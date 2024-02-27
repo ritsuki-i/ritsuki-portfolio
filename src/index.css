@@ -1,6 +1,6 @@
 /* 共通部分 */
 body {
-  font-family: "コーポレート明朝 ver2";
+  font-family: "コーポレート明朝 ver2", serif;
   background: linear-gradient(
     rgb(255, 157, 0),
     white,
