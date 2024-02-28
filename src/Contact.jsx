@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Contact.css";
 import { useFormik } from "formik";
+import emailjs from "emailjs-com";
 
 export default function Contact({handleValueChange}) {
   //入力情報の送信状態
   const [isSent, setIsSent] = useState(false);
+
+  const form = useRef();
 
   //入力情報が適しているか判別
   const validate = (values) => {
@@ -49,35 +52,28 @@ export default function Contact({handleValueChange}) {
     const message = document.getElementById("message");
 
     const postData = {
-      name: name.value,
-      email: email.value,
+      user_name: name.value,
+      user_email: email.value,
       message: message.value,
     };
 
     setIsSent(true);
-    console.log(postData);
 
-    /*
-    try {
-      const res = await fetch("https://api.staticforms.xyz/submit", {
-        method: "POST",
-        body: postData,
-        headers: { "Content-Type": "application/json" },
-      });
-      
-
-      const json = await res.json();
-
-      if (json.success) {
-        console.log("success");
-        
-      } else {
-        console.log("error");
-      }
-
-    } catch (e) {
-      console.log("An error occurred", e);
-    }*/
+    emailjs
+      .sendForm(
+        "service_g855gzi",
+        "template_u1ez4y8",
+        form.current,
+        "S96X1DSvrk5YIziBd"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   //入力データをローカルストレージに保存
@@ -119,16 +115,17 @@ export default function Contact({handleValueChange}) {
               </button>
             </div>
           ) : (
-            <form
-              action="https://api.staticforms.xyz/submit"
-              method="post"
-              onSubmit={handleSubmit}
-              onChange={SaveLocalstrage}
-            >
+            <form ref={form} onSubmit={handleSubmit} onChange={SaveLocalstrage}>
               <div className="field">
                 <label className="label-submit">お名前</label>
                 <div className="control">
-                  <input className="input" type="text" id="name" required />
+                  <input
+                    className="input"
+                    type="text"
+                    id="name"
+                    name="user_name"
+                    required
+                  />
                 </div>
               </div>
               <div className="field">
@@ -137,7 +134,7 @@ export default function Contact({handleValueChange}) {
                   <input
                     type="email"
                     className="input"
-                    name="email"
+                    name="user_email"
                     id="email"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -154,6 +151,7 @@ export default function Contact({handleValueChange}) {
                   <textarea
                     className="textarea"
                     id="message"
+                    name="message"
                     required
                   ></textarea>
                 </div>

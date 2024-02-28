@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ritsuki-portfolio/static/css/main.acdb62b2.css",
-    "main.js": "/ritsuki-portfolio/static/js/main.7ecdf65a.js",
+    "main.js": "/ritsuki-portfolio/static/js/main.655a7ef6.js",
     "index.html": "/ritsuki-portfolio/index.html",
     "main.acdb62b2.css.map": "/ritsuki-portfolio/static/css/main.acdb62b2.css.map",
-    "main.7ecdf65a.js.map": "/ritsuki-portfolio/static/js/main.7ecdf65a.js.map"
+    "main.655a7ef6.js.map": "/ritsuki-portfolio/static/js/main.655a7ef6.js.map"
   },
   "entrypoints": [
     "static/css/main.acdb62b2.css",
-    "static/js/main.7ecdf65a.js"
+    "static/js/main.655a7ef6.js"
   ]
 }
