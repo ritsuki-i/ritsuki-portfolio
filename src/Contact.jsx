@@ -11,7 +11,7 @@ export default function Contact({handleValueChange}) {
 
   //入力情報が適しているか判別
   const validate = (values) => {
-    const errors = {};
+    let errors = {};
 
     if (!values.email) {
       errors.email = "Required";
@@ -26,7 +26,7 @@ export default function Contact({handleValueChange}) {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      
     },
     validate,
   });
@@ -41,7 +41,9 @@ export default function Contact({handleValueChange}) {
     email.value = "";
     message.value = "";
 
-    SaveLocalstrage();
+    localStorage.setItem("name", name.value);
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("message", message.value);
   };
 
   //入力データを転送
@@ -59,6 +61,7 @@ export default function Contact({handleValueChange}) {
 
     setIsSent(true);
 
+    console.log(form.current);
     emailjs
       .sendForm(
         "service_g855gzi",
@@ -77,14 +80,17 @@ export default function Contact({handleValueChange}) {
   };
 
   //入力データをローカルストレージに保存
-  const SaveLocalstrage = () => {
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
+  const handleNameChange = (e) => {
+    localStorage.setItem("name", e.target.value);
+  };
 
-    localStorage.setItem("name", name.value);
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("message", message.value);
+  const handleEmailChange = (e) => {
+    formik.handleChange(e);
+    localStorage.setItem("email", e.target.value);
+  };
+
+  const handleMessageChange = (e) => {
+    localStorage.setItem("message", e.target.value);
   };
 
   //ページ起動時保存データを入力
@@ -115,7 +121,7 @@ export default function Contact({handleValueChange}) {
               </button>
             </div>
           ) : (
-            <form ref={form} onSubmit={handleSubmit} onChange={SaveLocalstrage}>
+            <form ref={form} onSubmit={handleSubmit}>
               <div className="field">
                 <label className="label-submit">お名前</label>
                 <div className="control">
@@ -124,6 +130,7 @@ export default function Contact({handleValueChange}) {
                     type="text"
                     id="name"
                     name="user_name"
+                    onChange={handleNameChange}
                     required
                   />
                 </div>
@@ -136,13 +143,10 @@ export default function Contact({handleValueChange}) {
                     className="input"
                     name="user_email"
                     id="email"
-                    onChange={formik.handleChange}
+                    onChange={(handleEmailChange, formik.handleChange)}
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
                   />
-                  {formik.touched.email && formik.errors.email ? (
-                    <span>{formik.errors.email}</span>
-                  ) : null}
                 </div>
               </div>
               <div className="field">
@@ -152,6 +156,7 @@ export default function Contact({handleValueChange}) {
                     className="textarea"
                     id="message"
                     name="message"
+                    onChange={handleMessageChange}
                     required
                   ></textarea>
                 </div>
