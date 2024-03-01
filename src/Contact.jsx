@@ -49,23 +49,13 @@ export default function Contact({handleValueChange}) {
   //入力データを転送
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
-
-    const postData = {
-      user_name: name.value,
-      user_email: email.value,
-      message: message.value,
-    };
 
     setIsSent(true);
 
-    console.log(form.current);
     emailjs
       .sendForm(
         "service_g855gzi",
-        "template_u1ez4y8",
+        "template_n3clx2p",
         form.current,
         "S96X1DSvrk5YIziBd"
       )
