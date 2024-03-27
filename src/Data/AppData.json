@@ -25,5 +25,13 @@
       "script": "MBTIの相性から最適なグルーピングができるwebアプリケーション"
     }
     
+  ],
+  "systems": [
+    {
+      "name": "Creating-stylish-pigeons",
+      "url": "https://github.com/ritsuki-i/Creating-stylish-pigeons",
+      "path": "img/Creating-stylish-pigeons.png",
+      "script": "画像内の鳩のスタイルを変更するPython用のライブラリ"
+    }
   ]
 }
