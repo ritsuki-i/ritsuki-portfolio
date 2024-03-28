@@ -22,8 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "rm": "rm -rf docs",
-    "mv": "mv build docs",
+    "rm": "rimraf docs",
+    "mv": "shx mv build docs",
     "git": "git add . && git commit && git push origin main",
     "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
@@ -45,5 +45,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://ritsuki-i.github.io/ritsuki-portfolio"
+  "homepage": "https://ritsuki-i.github.io/ritsuki-portfolio",
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "shx": "^0.3.4"
+  }
 }
