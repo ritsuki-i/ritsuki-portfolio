@@ -24,6 +24,7 @@ export default function AppCard() {
     return array;
   };
 
+  // adjustFontSize関数を定義  
   const adjustFontSize = () => {
     if (window.innerWidth <= 960) {
       const playbtn = document.querySelectorAll(".long");
@@ -42,12 +43,25 @@ export default function AppCard() {
       }
     }
   };
-  window.addEventListener("resize", adjustFontSize);
+
 
   useEffect(() => {
-    adjustFontSize();
     setShuffledApps(shuffleArray([...AppData.apps]));
     setShuffledSystems(shuffleArray([...AppData.systems]));
+  
+    // ページ読み込み時に実行
+    setTimeout(() => {
+      adjustFontSize();
+    }, 0);
+
+    
+    // ウィンドウのサイズ変更時にも実行
+    window.addEventListener("resize", adjustFontSize);
+
+    // コンポーネントのアンマウント時にイベントリスナーをクリーンアップ
+    return () => {
+      window.removeEventListener("resize", adjustFontSize);
+    };
   },[]);
   return (
     <div className="AppCard">
