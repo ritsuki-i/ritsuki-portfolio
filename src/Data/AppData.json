@@ -24,6 +24,13 @@
       "path": "img/Gwebapp.png",
       "script": "MBTIの相性から最適なグルーピングができるwebアプリケーション"
     }
+    ,
+    {
+      "name": "Travel Recorder",
+      "url": "https://travel-recorder.onrender.com/",
+      "path": "img/TravelRecorderIcon.png",
+      "script": "旅の思い出をgoogle mapに記録できるWebアプリケーション"
+    }
     
   ],
   "systems": [
