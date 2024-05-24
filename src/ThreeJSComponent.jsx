@@ -28,9 +28,9 @@ export default function ThreeJSComponent() {
     const loadPic = new THREE.TextureLoader();
 
     // 立方体を作成
-    let earthMesh = {}; // 空の連想配列を用意
+    const earthMeshes = []; // メッシュを保存する配列
     const earthContainer = new THREE.Object3D(); // Object3D を作成
-    UsedTecs.tecs.map((tecs, index) => {
+    UsedTecs.tecs.forEach((tecs, index) => {
       //マテリアルのサイズ設定
       const geometry = new THREE.BoxGeometry(tecs.size, tecs.size, tecs.size);
       // マテリアルにテクスチャーを設定
@@ -68,10 +68,19 @@ export default function ThreeJSComponent() {
 
         mesh.position.set(rand1, rand2, rand3);
       }
+
+      // 各メッシュに回転速度を設定
+      mesh.userData.rotationSpeed = {
+        x: Math.random() * 0.01 - 0.005,
+        y: Math.random() * 0.01 - 0.005,
+        z: Math.random() * 0.01 - 0.005
+      };
+
       // Object3D に Mesh を追加
       earthContainer.add(mesh);
 
-      return null;
+      // メッシュを配列に保存
+      earthMeshes.push(mesh);
     });
 
     scene.add(earthContainer); // シーンに Object3D を追加
@@ -99,36 +108,26 @@ export default function ThreeJSComponent() {
 
     const tick = () => {
       // マウスの位置に応じて角度を設定
-      // マウスのX座標がステージの幅の何%の位置にあるか調べてそれを360度で乗算する
       const targetRot = (mouseX / window.innerWidth) * 360;
-      // イージングの公式を用いて滑らかにする
-      // 値 += (目標値 - 現在の値) * 減速値
       rot += (targetRot - rot) * 0.02;
       rot2 += 0.1;
-      // ラジアンに変換する
       const radian = ((rot + rot2) * Math.PI) / 180;
-      // 角度に応じてカメラの位置を設定
       camera.position.x = 1000 * Math.sin(radian);
       camera.position.z = 1000 * Math.cos(radian);
-      // 原点方向を見つめる
       camera.lookAt(new THREE.Vector3(0, 0, 0));
 
       // マテリアルは常に回転させておく
-      for (let i = 0; i < earthMesh.length; i++) {
-        if (i === 0) {
-          earthMesh[i].rotation.x += 0.005;
-          earthMesh[i].rotation.y += 0.005;
-          earthMesh[i].rotation.z += 0.005;
+      earthMeshes.forEach((mesh, index) => {
+        if (index === 0) {
+          mesh.rotation.x += 0.005;
+          mesh.rotation.y += 0.005;
+          mesh.rotation.z += 0.005;
         } else {
-          let rand_speed1 = Math.random() * 0.4 - 0.2;
-          let rand_speed2 = Math.random() * 0.4 - 0.2;
-          let rand_speed3 = Math.random() * 0.4 - 0.2;
-
-          earthContainer[i].rotation.x += rand_speed1;
-          earthContainer[i].rotation.y += rand_speed2;
-          earthContainer[i].rotation.z += rand_speed3;
+          mesh.rotation.x += mesh.userData.rotationSpeed.x;
+          mesh.rotation.y += mesh.userData.rotationSpeed.y;
+          mesh.rotation.z += mesh.userData.rotationSpeed.z;
         }
-      }
+      });
 
       // レンダリング
       renderer.render(scene, camera);
