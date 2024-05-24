@@ -71,9 +71,9 @@ export default function ThreeJSComponent() {
 
       // 各メッシュに回転速度を設定
       mesh.userData.rotationSpeed = {
-        x: Math.random() * 0.01 - 0.005,
-        y: Math.random() * 0.01 - 0.005,
-        z: Math.random() * 0.01 - 0.005
+        x: Math.random() * 0.006 - 0.003,
+        y: Math.random() * 0.006 - 0.003,
+        z: Math.random() * 0.006 - 0.003
       };
 
       // Object3D に Mesh を追加
@@ -119,9 +119,9 @@ export default function ThreeJSComponent() {
       // マテリアルは常に回転させておく
       earthMeshes.forEach((mesh, index) => {
         if (index === 0) {
-          mesh.rotation.x += 0.005;
-          mesh.rotation.y += 0.005;
-          mesh.rotation.z += 0.005;
+          mesh.rotation.x += 0.001;
+          mesh.rotation.y += 0.001;
+          mesh.rotation.z += 0.001;
         } else {
           mesh.rotation.x += mesh.userData.rotationSpeed.x;
           mesh.rotation.y += mesh.userData.rotationSpeed.y;
