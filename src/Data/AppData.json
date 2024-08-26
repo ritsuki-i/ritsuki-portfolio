@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "COOK_WITH",
-      "url": "https://cw.pythonanywhere.com/",
+      "url": "https://ritsuki-i.github.io/cook_with/",
       "path": "img/cookwith-icon.png",
       "script": "欲しい栄養素からレシピを検索できるwebアプリケーション"
     },
