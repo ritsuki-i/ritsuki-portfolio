@@ -11,7 +11,7 @@ import UsedTecs from "./Data/UsedTec.json";
 
 export default function Home() {
 
-  const [nowPage, setPage] = useState("Home");
+  const [nowPage, setPage] = useState(sessionStorage.getItem('nowPage') || 'Home');
   const handleValueChange = (newValue) => {
     const Hambuegermenu = document.querySelector(".nav_toggle");
     const HambuegermenuElement = document.querySelector(".nav");
@@ -19,6 +19,7 @@ export default function Home() {
     HambuegermenuElement.classList.remove("show");
 
     setPage(newValue);
+    sessionStorage.setItem('nowPage', newValue)
   };
 
   const loadPage = () => {

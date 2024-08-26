@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "rm": "rimraf docs",
     "mv": "shx mv build docs",
-    "git": "git add . && git commit && git push origin main",
+    "git": "git add . && git commit -m 'deploy' && git push origin main",
     "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
