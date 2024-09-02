@@ -27,19 +27,29 @@ export default function AppCard() {
   // adjustFontSize関数を定義  
   const adjustFontSize = () => {
     if (window.innerWidth <= 960) {
-      const playbtn = document.querySelectorAll(".long");
+      const AppName = document.querySelectorAll(".app-name");
       const appimg = document.querySelectorAll(".appimg");
-      for (let i = 0; i < playbtn.length; i++) {
-        const size =
-          (playbtn[i].offsetWidth - appimg[i].offsetWidth - 20) /
-          playbtn[i].textContent.length;
-        playbtn[i].style.fontSize = size + "px";
+
+      for (let i = 0; i < AppName.length; i++) {
+        //アプリ名を取得
+        const textContent = AppName[i].textContent;
+
+        // 半角文字の数を取得 (大文字を除外)
+        const halfWidthCount = (textContent.match(/[ -~]/g) || []).length - (textContent.match(/[A-Z]/g) || []).length;
+        // 全角文字の数を取得（英語の大文字を全角として扱う）
+        const fullWidthCount = (textContent.match(/[^\x00-\x7F]/g) || []).length + (textContent.match(/[A-Z]/g) || []).length;
+
+        //半角文字列基準にとしたときの文字数
+        const textWidthCount = halfWidthCount + fullWidthCount * 2;
+
+        const size = (AppName[i].offsetWidth - appimg[i].offsetWidth - 20) / textWidthCount;
+        AppName[i].style.fontSize = size * 2 + "px";
       }
     } else {
-      const playbtn = document.querySelectorAll(".long");
-      for (let i = 0; i < playbtn.length; i++) {
+      const AppName = document.querySelectorAll(".long");
+      for (let i = 0; i < AppName.length; i++) {
         const size = 3;
-        playbtn[i].style.fontSize = size + "vh";
+        AppName[i].style.fontSize = size + "vh";
       }
     }
   };
@@ -69,16 +79,19 @@ export default function AppCard() {
       <div className="row g-4 mt-3">
         {shuffledApps.map((app) => (
           <div className="col-sm-4" key={app.name}>
-            <a href={app.url} target="_blank" rel="noopener noreferrer">
               <div className="app-card">
                 <div className="my-4">
                   <img src={app.path} className="appimg" alt="" />
-                  <h5 className="long">{app.name}</h5>
+                  <h5 className="app-name">{app.name}</h5>
                   <p>{app.script}</p>
-                  <button className="play-btn">Play</button>
+                  <div className="app-card-button">
+                    <button className="detail-btn">Detail</button>
+                    <a href={app.url} target="_blank" rel="noopener noreferrer">
+                      <button className="play-btn">Play</button>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
           </div>
         ))}
       </div>
@@ -86,16 +99,19 @@ export default function AppCard() {
       <div className="row g-4 mt-3">
         {shuffledSystems.map((system) => (
           <div className="col-sm-4" key={system.name}>
-            <a href={system.url} target="_blank" rel="noopener noreferrer">
               <div className="app-card">
                 <div className="my-4">
                   <img src={system.path} className="appimg" alt="" />
-                  <h5 className="long">{system.name}</h5>
+                  <h5 className="app-name">{system.name}</h5>
                   <p>{system.script}</p>
-                  <button className="play-btn">Play</button>
+                  <div className="app-card-button">
+                    <button className="detail-btn">Detail</button>
+                    <a href={system.url} target="_blank" rel="noopener noreferrer">
+                      <button className="play-btn">Play</button>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
           </div>
         ))}
       </div>

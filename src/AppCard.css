@@ -21,7 +21,7 @@
     margin-top: 10vh;
     width: 25vw;
     height: 60vh;
-    background-color: rgba(255, 255, 255, 0.204);
+    background-color: rgb(255, 255, 255);
     border-radius: 1.5em;
     transition: transform .4s;
 }
@@ -34,11 +34,6 @@
     margin-top: 20px;
     height: 60px;
     font-size: 2vh;
-}
-
-.app-card:hover {
-    box-shadow: none;
-    transform: translateY(4px);
 }
 
 .my-4 {
@@ -107,6 +102,10 @@
     .play-btn {
         margin-top: 10vw;
     }
+
+    .detail-btn {
+        margin-top: 10vw;
+    }
 }
 
 @media screen and (max-width: 520px) {
@@ -142,10 +141,6 @@
         font-size: 4vw;
     }
 
-    .play-btn {
-        font-size: 10px;
-    }
-
     .row {
         display: block;
     }
@@ -155,6 +150,13 @@
     }
 
     .play-btn {
+        font-size: 10px;
+        margin-top: 8vw;
+        height: auto;
+    }
+
+    .detail-btn {
+        font-size: 10px;
         margin-top: 8vw;
         height: auto;
     }
