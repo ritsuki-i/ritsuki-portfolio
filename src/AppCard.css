@@ -60,9 +60,42 @@
     color: black;
 }
 
+.app-popup {
+    position: fixed;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+.popup-content h2 {
+    margin-top: 0;
+}
+  
+.close-btn {
+    background-color: #ffffff00;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+}
+  
 @media screen and (min-width: 960px) {
     .app-card img {
         height: 20vh;
+    }
+    .app-popup{
+        width: 60vw;
+        left: 52%;
     }
 }
 

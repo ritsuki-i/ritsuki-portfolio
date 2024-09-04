@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./AppCard.css";
 import AppData from "./Data/AppData.json";
+import CloseIcon from '@mui/icons-material/Close';
+import { background } from "@chakra-ui/react";
 
 export default function AppCard() {
   const [shuffledApps, setShuffledApps] = useState([]);
   const [shuffledSystems, setShuffledSystems] = useState([]);
+  const [selectedApp, setSelectedApp] = useState(null);
 
   // 配列をシャッフルする関数
   const shuffleArray = (array) => {
@@ -46,7 +49,7 @@ export default function AppCard() {
         AppName[i].style.fontSize = size * 2 + "px";
       }
     } else {
-      const AppName = document.querySelectorAll(".long");
+      const AppName = document.querySelectorAll(".app-name");
       for (let i = 0; i < AppName.length; i++) {
         const size = 3;
         AppName[i].style.fontSize = size + "vh";
@@ -58,13 +61,13 @@ export default function AppCard() {
   useEffect(() => {
     setShuffledApps(shuffleArray([...AppData.apps]));
     setShuffledSystems(shuffleArray([...AppData.systems]));
-  
+
     // ページ読み込み時に実行
     setTimeout(() => {
       adjustFontSize();
     }, 0);
 
-    
+
     // ウィンドウのサイズ変更時にも実行
     window.addEventListener("resize", adjustFontSize);
 
@@ -72,26 +75,35 @@ export default function AppCard() {
     return () => {
       window.removeEventListener("resize", adjustFontSize);
     };
-  },[]);
+  }, []);
+
+  const handleDetailClick = (app) => {
+    setSelectedApp(app);
+  };
+
+  const closePopup = () => {
+    setSelectedApp(null);
+  };
+
   return (
     <div className="AppCard">
       <h1 className="title">Application</h1>
       <div className="row g-4 mt-3">
         {shuffledApps.map((app) => (
           <div className="col-sm-4" key={app.name}>
-              <div className="app-card">
-                <div className="my-4">
-                  <img src={app.path} className="appimg" alt="" />
-                  <h5 className="app-name">{app.name}</h5>
-                  <p>{app.script}</p>
-                  <div className="app-card-button">
-                    <button className="detail-btn">Detail</button>
-                    <a href={app.url} target="_blank" rel="noopener noreferrer">
-                      <button className="play-btn">Play</button>
-                    </a>
-                  </div>
+            <div className="app-card">
+              <div className="my-4">
+                <img src={app.path} className="appimg" alt="" />
+                <h5 className="app-name">{app.name}</h5>
+                <p>{app.script}</p>
+                <div className="app-card-button">
+                  <button className="detail-btn" onClick={() => handleDetailClick(app)}>Detail</button>
+                  <a href={app.url} target="_blank" rel="noopener noreferrer">
+                    <button className="play-btn">Play</button>
+                  </a>
                 </div>
               </div>
+            </div>
           </div>
         ))}
       </div>
@@ -99,22 +111,53 @@ export default function AppCard() {
       <div className="row g-4 mt-3">
         {shuffledSystems.map((system) => (
           <div className="col-sm-4" key={system.name}>
-              <div className="app-card">
-                <div className="my-4">
-                  <img src={system.path} className="appimg" alt="" />
-                  <h5 className="app-name">{system.name}</h5>
-                  <p>{system.script}</p>
-                  <div className="app-card-button">
-                    <button className="detail-btn">Detail</button>
-                    <a href={system.url} target="_blank" rel="noopener noreferrer">
-                      <button className="play-btn">Play</button>
-                    </a>
-                  </div>
+            <div className="app-card">
+              <div className="my-4">
+                <img src={system.path} className="appimg" alt="" />
+                <h5 className="app-name">{system.name}</h5>
+                <p>{system.script}</p>
+                <div className="app-card-button">
+                  <button className="detail-btn" onClick={() => handleDetailClick(system)}>Detail</button>
+                  <a href={system.url} target="_blank" rel="noopener noreferrer">
+                    <button className="play-btn">Play</button>
+                  </a>
                 </div>
               </div>
+            </div>
           </div>
         ))}
       </div>
+      {selectedApp && (
+        <div className="app-popup">
+          <div className="popup-content">
+            <h2>{selectedApp.name}</h2>
+            <p>{selectedApp.script}</p>
+            <p>
+              <span style={{ float: 'left', fontWeight: 'bold' }}>開発経緯:</span>
+              <span style={{ display: 'block', marginLeft: '80px' }}>{selectedApp.background}</span>
+            </p>
+            <p>
+              <span style={{ float: 'left', fontWeight: 'bold' }}>使用技術:</span>
+              <span style={{ display: 'block', marginLeft: '80px' }}>
+                {selectedApp.technology.split(" ").map((tec, index) => (
+                  <span key={index} style={{ backgroundColor: 'rgba(116, 116, 116, 0.407)', margin: '0 5px', borderRadius: '40%', padding: '5px', display: 'inline-block' }}>{tec}</span>
+                ))}
+              </span>
+            </p>
+            <button className="close-btn" onClick={closePopup}><CloseIcon /></button>
+            <div style={{ display: 'flex' ,justifyContent: 'center'}}>
+              {selectedApp.githuburl ? (
+                <a href={selectedApp.githuburl} target="_blank" rel="noopener noreferrer">
+                  <button className="selected-app-play-btn" style={{ display: 'block', margin:'auto', marginRight: '50px' }}>GitHub</button>
+                </a>
+              ) : null}
+              <a href={selectedApp.url} target="_blank" rel="noopener noreferrer">
+                <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto' }}>Play</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

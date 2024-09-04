@@ -33,28 +33,39 @@ export default function AboutContents() {
                 <td className="about-table-contents"></td>
               </tr>
               {AboutData[category].map((item, i_index) => (
-                <React.Fragment key={`${category}-${i_index}`}> 
-                  <tr className={`about-table-line ${selectedIndex === `${category}-${i_index}` ? "selected" : ""}`} onClick={() => handleRowClick(`${category}-${i_index}`)} > 
-                    <td className="about-table-expand">
+                <React.Fragment key={`${category}-${i_index}`}>
+                  <tr className={`about-table-line ${selectedIndex === `${category}-${i_index}` ? "selected" : ""}`} onClick={() => handleRowClick(`${category}-${i_index}`)} >
+                    <td className="about-table-expand" style={{ textAlign: 'center' }}>
                       {selectedIndex === `${category}-${i_index}` ? (
-                        <ExpandLessIcon sx={{ fontSize: 'small' }} />
+                        <ExpandLessIcon sx={{
+                          fontSize: {
+                            xs: 'small', // 960px以下の時
+                            md: 'large', // 960px以上の時
+                          }
+                        }} />
                       ) : (
-                        <ExpandMoreIcon sx={{ fontSize: 'small' }} />
+                        <ExpandMoreIcon sx={{
+                          fontSize: {
+                            xs: 'small', // 960px以下の時
+                            md: 'large', // 960px以上の時
+                          }
+                        }} />
                       )}
                     </td>
-                    <td className="about-table-year">{item.Year}</td> 
-                    <td className="about-table-contents">{item.Content}</td> 
-                  </tr> 
+
+                    <td className="about-table-year">{item.Year}</td>
+                    <td className="about-table-contents">{item.Content}</td>
+                  </tr>
                   {selectedIndex === `${category}-${i_index}` && (
-                    <tr className="detail-row"> 
-                      <td colSpan="3"> 
-                        <div className="details"> 
+                    <tr className="detail-row">
+                      <td colSpan="3">
+                        <div className="details">
                           <p>{item.detail}</p>
-                        </div> 
-                      </td> 
-                    </tr>)} 
-                  </React.Fragment>)
-                )}
+                        </div>
+                      </td>
+                    </tr>)}
+                </React.Fragment>)
+              )}
             </tbody>
           </table>
         </div>

@@ -3,43 +3,48 @@
     {
       "name": "COOK_WITH",
       "url": "https://ritsuki-i.github.io/cook_with/",
+      "githuburl":"https://github.com/ritsuki-i/cook_with",
       "path": "img/cookwith-icon.png",
       "script": "欲しい栄養素や使いたい食材からレシピを検索できるwebアプリケーション",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Flask React Material-UI Bootstrap lxml Selenium GitHub-Pages",
+      "background": "栄養素や食材ベースの検索機能、ユーザーフレンドリーなインターフェース、健康志向の対応を満たすアプリが世の中になく、またUIデザインを料理レシピサイトでよく見るような暖色系に統一させるのではなくモノトーンカラーをうまく使うことでターゲット層の差別化を測ることができると考え開発した。"
     },
     {
       "name": "おじさん構文翻訳AI",
       "url": "https://oji.pythonanywhere.com/",
+      "githuburl":"",
       "path": "img/ojitrans.jpg",
       "script": "AIを用いて「標準語⇄おじさん構文」の翻訳をすることができるwebアプリケーション",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Flask HTML CSS JavaScript DeepL-API",
+      "background": "おじさん構文を生成するサイトは存在していたが、自分が相手にこう送りたいと思ったおじさん構文の文章を生成することができなかったため、それができるツールができればいいなと思い制作した。"
     },
     {
       "name": "魔女見習いまじか♡マジカ",
       "url": "https://ritsuki-i.github.io/unitygame/",
+      "githuburl":"",
       "path": "img/unitygameicon.jpeg",
       "script": "ゲームエンジンUnityで作られたWeb2Dアクションゲーム",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Unity HTML CSS",
+      "background": "Unityで何かゲームを作ってみたかったが、難易度の高いものは作れないため、構造は簡単だけど面白くて笑えるもの、やり込めるものは何かと考えこのようなゲームを思いつき制作した。"
     },
     {
       "name": "-G-性格ぴったりグループ生成アプリ",
       "url": "https://hatothon-app.onrender.com/",
+      "githuburl":"https://github.com/ritsuki-i/hatothon-app",
       "path": "img/Gwebapp.png",
       "script": "MBTIの相性から最適なグルーピングができるwebアプリケーション",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Flask HTML CSS",
+      "background": "飲み会などの席でテーブルが2つあってどのようにグループ分けするか迷ったことは誰しも経験したことがあるのではないだろうか。そこで流行りの「MBTI」という要素を用いて性格的に相性の良いグルーピングができるアプリケーションを開発した。"
     }
     ,
     {
       "name": "Travel Recorder",
       "url": "https://travel-recorder.onrender.com/",
+      "githuburl":"https://github.com/ritsuki-i/Travel-Recorder",
       "path": "img/TravelRecorderIcon.png",
       "script": "旅の思い出をgoogle mapに記録できるWebアプリケーション",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Flask HTML CSS Firebase Google-Maps-API",
+      "background": "今までGoogleMapのようにマップにピンさして記録するもの存在するが、自分のステータスとして旅先の記録などを共有して話題の一つになるようなものはないと感じたため制作した。"
     }
     
   ],
@@ -47,10 +52,11 @@
     {
       "name": "Creating-stylish-pigeons",
       "url": "https://github.com/ritsuki-i/Creating-stylish-pigeons",
+      "githuburl":"",
       "path": "img/Creating-stylish-pigeons.png",
       "script": "画像内の鳩のスタイルを変更するPython用のライブラリ",
-      "technology": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "background": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "technology": "Python Pytorch setuptools",
+      "background": "鳩さんを金ピカにしたり、筋肉の画像から鳩さんの色を筋肉の色にしてムキムキな鳩さんを作りたいと考え、このライブラリを開発した。"
     }
   ]
 }
