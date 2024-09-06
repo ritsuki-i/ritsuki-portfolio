@@ -13,27 +13,37 @@ import { VscJson } from "react-icons/vsc";
 
 
 const Welcome = () => {
-    const [isVisible, setIsVisible] = useState(true); // 状態を管理
+    const [isVisible, setIsVisible] = useState(sessionStorage.getItem('isVisible') || true); // 状態を管理
     const [fadeOut, setFadeOut] = useState(false);
     const [isStart, setIsStart] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [isCompiledSuccess, setIsCompiledSuccess] = useState(false);
 
     useEffect(() => {
         const savedVisibility = sessionStorage.getItem('isVisible');
-        document.body.style.overflow = 'hidden';
+        console.log('isVisible:', isVisible);
+    
         if (savedVisibility !== null) {
-            setIsVisible(JSON.parse(savedVisibility)); // 文字列をbooleanに変換
+            setIsVisible(JSON.parse(savedVisibility)); // sessionStorageから取得した値でisVisibleを設定
         }
+        
+        setIsLoaded(true); // sessionStorageからの読み込みが完了
     }, []);
-
+    
+    useEffect(() => {
+        if (isLoaded && isVisible) {
+            document.body.style.overflow = 'hidden'; // ロード完了後に評価
+        }
+    }, [isLoaded, isVisible]);
+    
     const handleClick = () => {
-        // フェードアウトを開始
-        setFadeOut(true);
-
+        //操作ロックを解除
+        document.body.style.overflow = '';
         // 0.5秒後に要素を非表示にする
         setTimeout(() => {
+            // フェードアウトを開始
+            setFadeOut(true);   
             setIsVisible(false);
-            document.body.style.overflow = '';
             sessionStorage.setItem('isVisible', false);
         }, 500); 
     };
@@ -44,6 +54,10 @@ const Welcome = () => {
 
     const handleCompiledSuccess = () => {
         setIsCompiledSuccess(true);
+    }
+
+    if (!isLoaded) {
+        return null; // 読み込みが終わるまで何もレンダリングしない
     }
 
     return (
