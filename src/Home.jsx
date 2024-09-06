@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
@@ -6,12 +6,15 @@ import ThreeJSComponent from "./ThreeJSComponent.jsx";
 import About from "./About.jsx";
 import Application from "./Application.jsx";
 import Contact from "./Contact.jsx";
+import Welcome from "./Welcome.jsx";
 import AppData from "./Data/AppData.json";
 import UsedTecs from "./Data/UsedTec.json";
+
 
 export default function Home() {
 
   const [nowPage, setPage] = useState(sessionStorage.getItem('nowPage') || 'Home');
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 960);
   const handleValueChange = (newValue) => {
     const Hambuegermenu = document.querySelector(".nav_toggle");
     const HambuegermenuElement = document.querySelector(".nav");
@@ -22,9 +25,26 @@ export default function Home() {
     sessionStorage.setItem('nowPage', newValue)
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 960);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const loadPage = () => {
     if (nowPage === "Home") {
-      return <ThreeJSComponent />;
+      return (
+        <div>
+          {isDesktop && <Welcome />} {/* 960px以上でのみ表示 */}
+          <ThreeJSComponent />
+        </div>
+      );
     } else if (nowPage === "About") {
       return <About />;
     } else if (nowPage === "Application") {
