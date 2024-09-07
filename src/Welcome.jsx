@@ -21,7 +21,6 @@ const Welcome = () => {
 
     useEffect(() => {
         const savedVisibility = sessionStorage.getItem('isVisible');
-        console.log('isVisible:', isVisible);
     
         if (savedVisibility !== null) {
             setIsVisible(JSON.parse(savedVisibility)); // sessionStorageから取得した値でisVisibleを設定
