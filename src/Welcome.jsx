@@ -38,10 +38,10 @@ const Welcome = () => {
     const handleClick = () => {
         //操作ロックを解除
         document.body.style.overflow = '';
-        // 0.5秒後に要素を非表示にする
-        setTimeout(() => {
-            // フェードアウトを開始
+        // フェードアウトを開始
             setFadeOut(true);   
+        // 0.5秒後に要素を非表示にする
+        setTimeout(() => { 
             setIsVisible(false);
             sessionStorage.setItem('isVisible', false);
         }, 500); 
