@@ -21,31 +21,35 @@ const Welcome = () => {
 
     useEffect(() => {
         const savedVisibility = sessionStorage.getItem('isVisible');
-    
+
         if (savedVisibility !== null) {
             setIsVisible(JSON.parse(savedVisibility)); // sessionStorageから取得した値でisVisibleを設定
         }
-        
+
         setIsLoaded(true); // sessionStorageからの読み込みが完了
     }, []);
-    
+
     useEffect(() => {
         if (isLoaded && isVisible) {
             document.body.style.overflow = 'hidden'; // ロード完了後に評価
         }
     }, [isLoaded, isVisible]);
-    
+
     const handleClick = () => {
         //操作ロックを解除
         document.body.style.overflow = '';
         // フェードアウトを開始
-            setFadeOut(true);   
+        setFadeOut(true);
         // 0.5秒後に要素を非表示にする
-        setTimeout(() => { 
-            setIsVisible(false);
-            sessionStorage.setItem('isVisible', false);
-        }, 500); 
+        setTimeout(() => {
+            handleClose()
+        }, 500);
     };
+
+    const handleClose = () => {
+        setIsVisible(false);
+        sessionStorage.setItem('isVisible', false);
+    }
 
     const handleStart = () => {
         setIsStart(true);
@@ -99,7 +103,13 @@ const Welcome = () => {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginLeft: 'auto' }}>
                             <li style={{ color: 'white', display: 'flex', alignItems: 'center', paddingRight: '25px' }}><RemoveIcon style={{ fontSize: '20px' }} /></li>
                             <li style={{ color: 'white', transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', paddingLeft: '25px' }}><FilterNoneIcon style={{ fontSize: '20px' }} /></li>
-                            <li style={{ color: 'white', display: 'flex', alignItems: 'center', paddingRight: '10px' }}><CloseIcon style={{ fontSize: '20px' }} /></li>
+                            <button onClick={() => handleClose()} style={{
+                                background: 'none', 
+                                border: 'none', 
+                                margin: '0'
+                            }}>
+                                <li style={{ color: 'white', display: 'flex', alignItems: 'center', paddingRight: '10px' }}><CloseIcon style={{ fontSize: '20px' }} /></li>
+                            </button>
                         </div>
                     </ul>
                     <div style={{ display: 'flex' }}>
