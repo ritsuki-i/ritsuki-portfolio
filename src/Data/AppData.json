@@ -46,6 +46,16 @@
       "technology": "Flask HTML CSS Firebase Google-Maps-API",
       "background": "今までGoogleMapのようにマップにピンさして記録するもの存在するが、自分のステータスとして旅先の記録などを共有して話題の一つになるようなものはないと感じたため制作した。"
     }
+    ,
+    {
+      "name": "What's this error?",
+      "url": "https://ritsuki-i.github.io/error-code-quiz/",
+      "githuburl":"https://github.com/ritsuki-i/error-code-quiz/",
+      "path": "img/StatusCode-icon.png",
+      "script": "ゲームでHTTPステータスコードを勉強できるWebアプリケーション",
+      "technology": "React Material-UI Bootstrap GitHub-Pages",
+      "background": "サークル内で遊べるボドゲとしてHTTPステータスコードかるたを作成したが、それをアプリ化、また楽しく学習できるプラットフォームが欲しかったため制作した。"
+    }
     
   ],
   "systems": [
