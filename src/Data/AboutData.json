@@ -70,6 +70,11 @@
       "Year": "2024 May",
       "Content": "Travel Recorder",
       "detail": "旅の思い出をgoogle mapに記録できるWebアプリケーション。SNSに自分の記録したマップのurlを共有することで自分の旅の記録を共有できる。"
+    },
+    {
+      "Year": "2024 Oct",
+      "Content": "What's this error?",
+      "detail": "クイズやかるたを通じてHTTPステータスコードを勉強できるWebアプリケーション"
     }
   ],
   "Systems": [
