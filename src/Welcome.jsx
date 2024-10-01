@@ -47,6 +47,7 @@ const Welcome = () => {
     };
 
     const handleClose = () => {
+        document.body.style.overflow = '';
         setIsVisible(false);
         sessionStorage.setItem('isVisible', false);
     }
