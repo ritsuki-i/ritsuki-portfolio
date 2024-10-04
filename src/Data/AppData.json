@@ -49,8 +49,8 @@
     ,
     {
       "name": "What's this error?",
-      "url": "https://ritsuki-i.github.io/error-code-quiz/",
-      "githuburl":"https://github.com/ritsuki-i/error-code-quiz/",
+      "url": "https://ritsuki-i.github.io/status-code-quiz/",
+      "githuburl":"https://github.com/ritsuki-i/status-code-quiz/",
       "path": "img/StatusCode-icon.png",
       "script": "ゲームでHTTPステータスコードを勉強できるWebアプリケーション",
       "technology": "React Material-UI Bootstrap GitHub-Pages",
