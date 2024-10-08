@@ -53,7 +53,7 @@
       "githuburl":"https://github.com/ritsuki-i/status-code-quiz/",
       "path": "img/StatusCode-icon.png",
       "script": "ゲームでHTTPステータスコードを勉強できるWebアプリケーション",
-      "technology": "React Material-UI Bootstrap GitHub-Pages",
+      "technology": "React Material-UI Bootstrap GitHub-Pages Firebase",
       "background": "サークル内で遊べるボドゲとしてHTTPステータスコードかるたを作成したが、それをアプリ化、また楽しく学習できるプラットフォームが欲しかったため制作した。"
     }
     
