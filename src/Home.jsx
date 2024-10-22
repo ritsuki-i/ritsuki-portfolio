@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { CSSTransition, SwitchTransition } from "react-transition-group"; // 追加
 import "./Home.css";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
@@ -10,11 +11,10 @@ import Welcome from "./Welcome.jsx";
 import AppData from "./Data/AppData.json";
 import UsedTecs from "./Data/UsedTec.json";
 
-
 export default function Home() {
-
   const [nowPage, setPage] = useState(sessionStorage.getItem('nowPage') || 'Home');
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 960);
+
   const handleValueChange = (newValue) => {
     const Hambuegermenu = document.querySelector(".nav_toggle");
     const HambuegermenuElement = document.querySelector(".nav");
@@ -22,7 +22,7 @@ export default function Home() {
     HambuegermenuElement.classList.remove("show");
 
     setPage(newValue);
-    sessionStorage.setItem('nowPage', newValue)
+    sessionStorage.setItem('nowPage', newValue);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Home() {
     if (nowPage === "Home") {
       return (
         <div>
-          {isDesktop && <Welcome />} {/* 960px以上でのみ表示 */}
+          {isDesktop && <Welcome />}
           <ThreeJSComponent />
         </div>
       );
@@ -75,7 +75,15 @@ export default function Home() {
   return (
     <div className="Home">
       <Header handleValueChange={handleValueChange} nowPage={nowPage} />
-      {loadPage()}
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={nowPage} // ページが変わるたびにキーを変更
+          timeout={800} // アニメーションの時間
+          classNames="fade" // CSSクラス名
+        >
+          <div>{loadPage()}</div>
+        </CSSTransition>
+      </SwitchTransition>
       <Footer />
     </div>
   );

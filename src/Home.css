@@ -1,11 +1,39 @@
 .footer-index {
     height: 80px;
 }
+
 .footer-index p {
     float: left;
     padding: 20px 40px;
 }
+
 #canvas {
     width: 100%;
     height: 100%;
+}
+
+/* フェードイン（エントリー時） */
+.fade-enter {
+    opacity: 0;
+    /* 完全に透明な状態から始める */
+}
+
+.fade-enter-active {
+    opacity: 1;
+    /* 完全に表示される */
+    transition: opacity 00ms ease-in-out;
+    /* 800msでフェードイン */
+}
+
+/* フェードアウト（エクジット時） */
+.fade-exit {
+    opacity: 1;
+    /* 完全に表示されている状態から始める */
+}
+
+.fade-exit-active {
+    opacity: 0;
+    /* フェードアウトで透明になる */
+    transition: opacity 800ms ease-in-out;
+    /* 800msでフェードアウト */
 }
