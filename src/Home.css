@@ -21,7 +21,7 @@
 .fade-enter-active {
     opacity: 1;
     /* 完全に表示される */
-    transition: opacity 00ms ease-in-out;
+    transition: opacity 800ms ease-in-out;
     /* 800msでフェードイン */
 }
 
