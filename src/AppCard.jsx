@@ -45,7 +45,12 @@ export default function AppCard() {
         const textWidthCount = halfWidthCount + fullWidthCount * 2;
 
         const size = (AppName[i].offsetWidth - appimg[i].offsetWidth - 20) / textWidthCount;
-        AppName[i].style.fontSize = size * 2 + "px";
+        
+        if(size*2 < 19.5){
+          AppName[i].style.fontSize = size * 2 + "px";
+        }else{
+          AppName[i].style.fontSize =  "19.5px";
+        }
       }
     } else {
       const AppName = document.querySelectorAll(".app-name");
