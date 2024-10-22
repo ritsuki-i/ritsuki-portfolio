@@ -82,6 +82,11 @@
       "Year": "2024 Mar",
       "Content": "Creating-stylish-pigeons",
       "detail": "画像内の鳩さんのスタイルを変更するPython用のライブラリ。鳩さんを金ぴかにしたり、ゴッホ風にしたりなどスタイルを変換することができる。"
+    },
+    {
+      "Year": "2024 Oct",
+      "Content": "AirCursor",
+      "detail": "ハンドトラッキングの技術を用いて、マウスを使わずに手のモーションのみでPCを操作できるReactコンポーネント。"
     }
   ],
   "Hackathon": [

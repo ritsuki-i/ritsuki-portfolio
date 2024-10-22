@@ -144,15 +144,17 @@ export default function AppCard() {
               </span>
             </p>
             <button className="close-btn" onClick={closePopup}><CloseIcon /></button>
-            <div style={{ display: 'flex' ,justifyContent: 'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
               {selectedApp.githuburl ? (
                 <a href={selectedApp.githuburl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <button className="selected-app-play-btn" style={{ display: 'block', margin:'auto', marginRight: '50px' }}>GitHub</button>
+                  <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto', marginRight: '50px' }}>GitHub</button>
                 </a>
               ) : null}
-              <a href={selectedApp.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto' }}>Play</button>
-              </a>
+              {selectedApp.url ? (
+                <a href={selectedApp.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto' }}>Play</button>
+                </a>
+              ) : null}
             </div>
           </div>
         </div>

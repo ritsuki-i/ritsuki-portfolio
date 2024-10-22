@@ -61,12 +61,21 @@
   "systems": [
     {
       "name": "Creating-stylish-pigeons",
-      "url": "https://github.com/ritsuki-i/Creating-stylish-pigeons",
-      "githuburl":"",
+      "url": "",
+      "githuburl":"https://github.com/ritsuki-i/Creating-stylish-pigeons",
       "path": "img/Creating-stylish-pigeons.png",
       "script": "画像内の鳩のスタイルを変更するPython用のライブラリ",
       "technology": "Python Pytorch setuptools",
       "background": "鳩さんを金ピカにしたり、筋肉の画像から鳩さんの色を筋肉の色にしてムキムキな鳩さんを作りたいと考え、このライブラリを開発した。"
+    },
+    {
+      "name": "AirCursor",
+      "url": "",
+      "githuburl":"https://github.com/ritsuki-i/AirCursor",
+      "path": "img/AirCursor-icon.png",
+      "script": "マウスを使わずに手のモーションのみでPCを操作できるReactコンポーネント",
+      "technology": "React MediaPipe Babel GitHub-Pages",
+      "background": "ハンドトラッキングの勉強をしている際に手のパーツの座標を取得できるなら指を合わせる動作を使ってマウスなしでマウスのような動きを再現できるのではないかと考え開発した。"
     }
   ]
 }
