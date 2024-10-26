@@ -122,9 +122,15 @@ export default function AppCard() {
                 <p>{system.script}</p>
                 <div className="app-card-button">
                   <button className="detail-btn" onClick={() => handleDetailClick(system)}>Detail</button>
-                  <a href={system.url} target="_blank" rel="noopener noreferrer">
-                    <button className="play-btn">Play</button>
-                  </a>
+                  {system.url ? (
+                    <a href={system.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <button className="selected-app-play-btn">Play</button>
+                    </a>
+                  ) : (
+                    <a href={system.githuburl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <button className="selected-app-play-btn">Play</button>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
