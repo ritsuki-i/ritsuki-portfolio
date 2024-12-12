@@ -1,175 +1,301 @@
-import React, { useEffect, useState } from "react";
-import "./AppCard.css";
-import AppData from "./Data/AppData.json";
-import CloseIcon from '@mui/icons-material/Close';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Modal from 'react-modal';
+import { motion } from 'framer-motion';
+import { GitHub, ExternalLink, X } from 'react-feather';
 
-export default function AppCard() {
+// AppDataのインポートは変更なし
+import AppData from './Data/AppData.json';
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+`;
+
+const Card = styled(motion.div)`
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`;
+
+const CardContent = styled.div`
+  padding: 1.5rem;
+  flex-grow: 1;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+const CardDescription = styled.p`
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 1rem;
+`;
+
+const CardFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+`;
+
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 36px;  // 固定の高さを追加
+  display: inline-flex;  // flexboxを使用
+  align-items: center;  // 垂直方向の中央揃え
+  justify-content: center;  // 水平方向の中央揃え
+
+  &.primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &.secondary {
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+
+    &:hover {
+      background-color: #f8f8f8;
+    }
+  }
+
+  span {
+    position: relative;
+    top: 2px; /* 文字を下に移動 */
+  }
+
+  svg {
+    margin-right: 0.3rem; 
+  }
+`;
+
+const ModalContent = styled.div`
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+`;
+
+const TechBadge = styled.span`
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const ModalButtons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  margin-right: 1vh;
+  margin-top: 1vh;
+  padding: 0;
+`;
+
+export default function AppShowcase() {
   const [shuffledApps, setShuffledApps] = useState([]);
   const [shuffledSystems, setShuffledSystems] = useState([]);
-  const [selectedApp, setSelectedApp] = useState(null);
-
-  // 配列をシャッフルする関数
-  const shuffleArray = (array) => {
-    let currentIndex = array.length, randomIndex;
-
-    // 配列が空になるまでシャッフルを続ける
-    while (currentIndex !== 0) {
-      // 残っている要素をランダムに取得
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // そしてそれを現在の要素と交換する
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-
-    return array;
-  };
-
-  // adjustFontSize関数を定義  
-  const adjustFontSize = () => {
-    if (window.innerWidth <= 960) {
-      const AppName = document.querySelectorAll(".app-name");
-      const appimg = document.querySelectorAll(".appimg");
-
-      for (let i = 0; i < AppName.length; i++) {
-        //アプリ名を取得
-        const textContent = AppName[i].textContent;
-
-        // 半角文字の数を取得 (大文字を除外)
-        const halfWidthCount = (textContent.match(/[ -~]/g) || []).length - (textContent.match(/[A-Z]/g) || []).length;
-        // 全角文字の数を取得（英語の大文字を全角として扱う）
-        const fullWidthCount = (textContent.match(/[^\x00-\x7F]/g) || []).length + (textContent.match(/[A-Z]/g) || []).length;
-
-        //半角文字列基準にとしたときの文字数
-        const textWidthCount = halfWidthCount + fullWidthCount * 2;
-
-        const size = (AppName[i].offsetWidth - appimg[i].offsetWidth - 20) / textWidthCount;
-        
-        if(size*2 < 19.5){
-          AppName[i].style.fontSize = size * 2 + "px";
-        }else{
-          AppName[i].style.fontSize =  "19.5px";
-        }
-      }
-    } else {
-      const AppName = document.querySelectorAll(".app-name");
-      for (let i = 0; i < AppName.length; i++) {
-        const size = 3;
-        AppName[i].style.fontSize = size + "vh";
-      }
-    }
-  };
-
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setShuffledApps(shuffleArray([...AppData.apps]));
     setShuffledSystems(shuffleArray([...AppData.systems]));
-
-    // ページ読み込み時に実行
-    setTimeout(() => {
-      adjustFontSize();
-    }, 0);
-
-
-    // ウィンドウのサイズ変更時にも実行
-    window.addEventListener("resize", adjustFontSize);
-
-    // コンポーネントのアンマウント時にイベントリスナーをクリーンアップ
-    return () => {
-      window.removeEventListener("resize", adjustFontSize);
-    };
   }, []);
 
-  const handleDetailClick = (app) => {
-    setSelectedApp(app);
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
   };
 
-  const closePopup = () => {
-    setSelectedApp(null);
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const AppCard = ({ item, type }) => (
+    <Card
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <CardImage src={item.path} alt={item.name} />
+      <CardContent>
+        <CardTitle>{item.name}</CardTitle>
+        <CardDescription>{item.script}</CardDescription>
+      </CardContent>
+      <CardFooter>
+        <Button className="secondary" onClick={() => openModal(item)}>
+          Details
+        </Button>
+        {type === 'app' ? (
+          <a href={item.url}>
+            <Button className="primary" href={item.url} target="_blank" rel="noopener noreferrer">
+              Play
+            </Button>
+          </a>
+        ) : (
+          <a href={item.url || item.githuburl}>
+            <Button className="primary" target="_blank" rel="noopener noreferrer">
+              {item.url ? 'Play' : 'GitHub'}
+            </Button>
+          </a>
+        )}
+      </CardFooter>
+    </Card>
+  );
 
   return (
-    <div className="AppCard">
-      <h1 className="title">Application</h1>
-      <div className="row g-4 mt-3">
-        {shuffledApps.map((app) => (
-          <div className="col-sm-4" key={app.name}>
-            <div className="app-card">
-              <div className="my-4">
-                <img src={app.path} className="appimg" alt="" />
-                <h5 className="app-name">{app.name}</h5>
-                <p>{app.script}</p>
-                <div className="app-card-button">
-                  <button className="detail-btn" onClick={() => handleDetailClick(app)}>Detail</button>
-                  <a href={app.url} target="_blank" rel="noopener noreferrer">
-                    <button className="play-btn">Play</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <h1 className="title">System</h1>
-      <div className="row g-4 mt-3">
-        {shuffledSystems.map((system) => (
-          <div className="col-sm-4" key={system.name}>
-            <div className="app-card">
-              <div className="my-4">
-                <img src={system.path} className="appimg" alt="" />
-                <h5 className="app-name">{system.name}</h5>
-                <p>{system.script}</p>
-                <div className="app-card-button">
-                  <button className="detail-btn" onClick={() => handleDetailClick(system)}>Detail</button>
-                  {system.url ? (
-                    <a href={system.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                      <button className="selected-app-play-btn">Play</button>
-                    </a>
-                  ) : (
-                    <a href={system.githuburl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                      <button className="selected-app-play-btn">Play</button>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      {selectedApp && (
-        <div className="app-popup">
-          <div className="popup-content">
-            <h2>{selectedApp.name}</h2>
-            <p>{selectedApp.script}</p>
-            <p>
-              <span style={{ float: 'left', fontWeight: 'bold' }}>開発経緯:</span>
-              <span style={{ display: 'block', marginLeft: '80px' }}>{selectedApp.background}</span>
-            </p>
-            <p>
-              <span style={{ float: 'left', fontWeight: 'bold' }}>使用技術:</span>
-              <span style={{ display: 'block', marginLeft: '80px' }}>
-                {selectedApp.technology.split(" ").map((tec, index) => (
-                  <span key={index} style={{ backgroundColor: 'rgba(116, 116, 116, 0.407)', margin: '0 5px', borderRadius: '40%', padding: '5px', display: 'inline-block' }}>{tec}</span>
+    <div>
+      <h1 className="title">AppShowcase</h1>
+      <Container>
+        <section>
+          <SectionTitle>Applications</SectionTitle>
+          <Grid>
+            {shuffledApps.map((app) => (
+              <AppCard key={app.name} item={app} type="app" />
+            ))}
+          </Grid>
+        </section>
+
+        <section>
+          <SectionTitle>Systems</SectionTitle>
+          <Grid>
+            {shuffledSystems.map((system) => (
+              <AppCard key={system.name} item={system} type="system" />
+            ))}
+          </Grid>
+        </section>
+
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          contentLabel="App Details"
+          style={{
+            content: {
+              top: '50%',
+              left: '50%',
+              right: 'auto',
+              bottom: 'auto',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)',
+              maxWidth: '500px',
+              width: '90%',
+            },
+          }}
+        >
+          {selectedItem && (
+            <ModalContent>
+              <CloseButton onClick={closeModal}><X /></CloseButton>
+              <h2>{selectedItem.name}</h2>
+              <p>{selectedItem.script}</p>
+              <h4>Development Background:</h4>
+              <p>{selectedItem.background}</p>
+              <h4>Technologies Used:</h4>
+              <div>
+                {selectedItem.technology.split(" ").map((tech, index) => (
+                  <TechBadge key={index}>{tech}</TechBadge>
                 ))}
-              </span>
-            </p>
-            <button className="close-btn" onClick={closePopup}><CloseIcon /></button>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              {selectedApp.githuburl ? (
-                <a href={selectedApp.githuburl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto', marginRight: '50px' }}>GitHub</button>
-                </a>
-              ) : null}
-              {selectedApp.url ? (
-                <a href={selectedApp.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <button className="selected-app-play-btn" style={{ display: 'block', margin: 'auto' }}>Play</button>
-                </a>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      )}
+              </div>
+              <ModalButtons>
+                {selectedItem.githuburl && (
+                  <a href={selectedItem.githuburl}>
+                    <Button className="secondary" target="_blank" rel="noopener noreferrer">
+                      <GitHub size={16} style={{ marginRight: '0.5rem' }} /> 
+                      <span>GitHub</span>
+                    </Button>
+                  </a>
+                )}
+                {selectedItem.url && (
+                  <a href={selectedItem.url}>
+                    <Button className="primary" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={16} style={{ marginRight: '0.5rem' }} /> 
+                      <span>Play</span>
+                    </Button>
+                  </a>
+                )}
+              </ModalButtons>
+            </ModalContent> 
+          )}
+        </Modal>
+      </Container>
     </div>
   );
-}
+};
+
