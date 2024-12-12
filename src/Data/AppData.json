@@ -2,6 +2,7 @@
   "apps": [
     {
       "name": "COOK_WITH",
+      "tag": "Web Aplication",
       "url": "https://ritsuki-i.github.io/cook_with/",
       "githuburl":"https://github.com/ritsuki-i/cook_with",
       "path": "img/cookwith-icon.png",
@@ -11,6 +12,7 @@
     },
     {
       "name": "おじさん構文翻訳AI",
+      "tag": "Web Aplication",
       "url": "https://oji.pythonanywhere.com/",
       "githuburl":"",
       "path": "img/ojitrans.jpg",
@@ -20,6 +22,7 @@
     },
     {
       "name": "魔女見習いまじか♡マジカ",
+      "tag": "Web Game",
       "url": "https://ritsuki-i.github.io/unitygame/",
       "githuburl":"",
       "path": "img/unitygameicon.jpeg",
@@ -29,6 +32,7 @@
     },
     {
       "name": "-G-性格ぴったりグループ生成アプリ",
+      "tag": "Web Aplication",
       "url": "https://hatothon-app.onrender.com/",
       "githuburl":"https://github.com/ritsuki-i/hatothon-app",
       "path": "img/Gwebapp.png",
@@ -39,6 +43,7 @@
     ,
     {
       "name": "Travel Recorder",
+      "tag": "Web Aplication",
       "url": "https://travel-recorder.onrender.com/",
       "githuburl":"https://github.com/ritsuki-i/Travel-Recorder",
       "path": "img/TravelRecorderIcon.png",
@@ -49,6 +54,7 @@
     ,
     {
       "name": "What's this error?",
+      "tag": "Web Game",
       "url": "https://ritsuki-i.github.io/status-code-quiz/",
       "githuburl":"https://github.com/ritsuki-i/status-code-quiz/",
       "path": "img/StatusCode-icon.png",
@@ -61,6 +67,7 @@
   "systems": [
     {
       "name": "Creating-stylish-pigeons",
+      "tag": "Python Library",
       "url": "",
       "githuburl":"https://github.com/ritsuki-i/Creating-stylish-pigeons",
       "path": "img/Creating-stylish-pigeons.png",
@@ -70,6 +77,7 @@
     },
     {
       "name": "AirCursor",
+      "tag": "React Library",
       "url": "https://ritsuki-i.github.io/HandTrackingComponent/",
       "githuburl":"https://github.com/ritsuki-i/AirCursor",
       "path": "img/AirCursor-icon.png",

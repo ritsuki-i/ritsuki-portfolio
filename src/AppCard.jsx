@@ -13,13 +13,6 @@ const Container = styled.div`
   padding: 2rem;
 `;
 
-const Title = styled.h1`
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: 600;
@@ -31,6 +24,11 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
 `;
 
 const Card = styled(motion.div)`
@@ -40,35 +38,64 @@ const Card = styled(motion.div)`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    height: 200px;
+    box-shadow: none;
+    border: none;
+    background-color: #ffffff00;
+  }
 `;
 
 const CardImage = styled.img`
   width: 100%;
   height: 200px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    height: 150px;
+  }
 `;
 
 const CardContent = styled.div`
   padding: 1.5rem;
   flex-grow: 1;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 0;
+  }
 `;
 
 const CardTitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-top: 0;
+  }
 `;
 
 const CardDescription = styled.p`
   font-size: 0.875rem;
   color: #666;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Button = styled.button`
@@ -77,39 +104,46 @@ const Button = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-  height: 36px;  // 固定の高さを追加
-  display: inline-flex;  // flexboxを使用
-  align-items: center;  // 垂直方向の中央揃え
-  justify-content: center;  // 水平方向の中央揃え
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &.primary {
-    background-color: #3498db;
+    background-color: #000000;
     color: white;
     border: none;
 
     &:hover {
-      background-color: #2980b9;
+      background-color: #5f5f5f;
     }
   }
 
   &.secondary {
     background-color: white;
-    color: #3498db;
-    border: 1px solid #3498db;
+    color: #000000;
+    border: 1px solid #000000;
 
     &:hover {
-      background-color: #f8f8f8;
+      background-color: #cacaca;
     }
   }
 
   span {
     position: relative;
-    top: 2px; /* 文字を下に移動 */
+    top: 2px;
   }
 
   svg {
     margin-right: 0.3rem; 
   }
+`;
+
+const Tag = styled.span`
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #989898;;
+  display: block;
 `;
 
 const ModalContent = styled.div`
@@ -194,19 +228,21 @@ export default function AppShowcase() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      onClick={() => openModal(item)}
     >
       <CardImage src={item.path} alt={item.name} />
       <CardContent>
+        <Tag>{item.tag}</Tag>
         <CardTitle>{item.name}</CardTitle>
         <CardDescription>{item.script}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button className="secondary" onClick={() => openModal(item)}>
+        <Button className="secondary">
           Details
         </Button>
         {type === 'app' ? (
           <a href={item.url}>
-            <Button className="primary" href={item.url} target="_blank" rel="noopener noreferrer">
+            <Button className="primary" target="_blank" rel="noopener noreferrer">
               Play
             </Button>
           </a>
@@ -263,6 +299,7 @@ export default function AppShowcase() {
           {selectedItem && (
             <ModalContent>
               <CloseButton onClick={closeModal}><X /></CloseButton>
+              <Tag>{selectedItem.tag}</Tag>
               <h2>{selectedItem.name}</h2>
               <p>{selectedItem.script}</p>
               <h4>Development Background:</h4>
@@ -277,7 +314,7 @@ export default function AppShowcase() {
                 {selectedItem.githuburl && (
                   <a href={selectedItem.githuburl}>
                     <Button className="secondary" target="_blank" rel="noopener noreferrer">
-                      <GitHub size={16} style={{ marginRight: '0.5rem' }} /> 
+                      <GitHub size={16} style={{ marginRight: '0.5rem' }} />
                       <span>GitHub</span>
                     </Button>
                   </a>
@@ -285,17 +322,17 @@ export default function AppShowcase() {
                 {selectedItem.url && (
                   <a href={selectedItem.url}>
                     <Button className="primary" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={16} style={{ marginRight: '0.5rem' }} /> 
+                      <ExternalLink size={16} style={{ marginRight: '0.5rem' }} />
                       <span>Play</span>
                     </Button>
                   </a>
                 )}
               </ModalButtons>
-            </ModalContent> 
+            </ModalContent>
           )}
         </Modal>
       </Container>
     </div>
   );
-};
+}
 
