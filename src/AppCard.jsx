@@ -10,13 +10,23 @@ import AppData from './Data/AppData.json';
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 50px;
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin: 0; 
+  }
 `;
 
 const Grid = styled.div`
@@ -27,7 +37,7 @@ const Grid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
+    gap: 50px;
   }
 `;
 
@@ -63,7 +73,7 @@ const CardContent = styled.div`
   flex-grow: 1;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 0;
+    padding: 0;
   }
 `;
 
@@ -74,6 +84,7 @@ const CardTitle = styled.h3`
 
   @media (max-width: 768px) {
     font-size: 1rem;
+    margin-bottom: 0;
     margin-top: 0;
   }
 `;
