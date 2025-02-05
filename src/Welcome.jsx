@@ -89,7 +89,7 @@ const Welcome = () => {
                         <li style={{ paddingLeft: '10px' }}>・・・</li>
                         <li style={{
                             border: '1px solid white',
-                            width: '40vw',
+                            width: 'velvw',
                             marginLeft: '20px',
                             borderRadius: '5px',
                             textAlign: 'center',
@@ -165,7 +165,7 @@ const Welcome = () => {
                         </div>
                         <div style={{ width: '90vw' }}>
                             <ul style={{
-                                height: '40px',
+                                height: 'velpx',
                                 color: 'white',
                                 listStyle: 'none',
                                 display: 'flex',
@@ -180,7 +180,7 @@ const Welcome = () => {
                             </ul>
                             <p style={{ borderBottom: '1px solid white', color: 'white', margin: '0', fontSize: 'small', paddingLeft: '10px', backgroundColor: 'black' }}>Users &gt; Desktop &gt; ritsuki-portfolio &gt; <FaReact style={{ color: '#59d3ff' }} />Welcome.jsx</p>
                             <div style={{ overflow: 'hidden', position: 'relative' }}>
-                                <table style={{ color: 'white', transform: 'translateY(-40px)', paddingLeft: '10px' }}>
+                                <table style={{ color: 'white', transform: 'translateY(-velpx)', paddingLeft: '10px' }}>
                                     <tbody>
                                         <tr>
                                             <td style={{ textAlign: 'right', color: '#59d3ff' }}>84</td>
@@ -303,7 +303,7 @@ const Welcome = () => {
                             </div>
                             <div style={{ position: 'absolute', bottom: '0', borderTop: '1px solid white', height: '50vh', width: '100%', zIndex: '9', backgroundColor: 'black' }}>
                                 <ul style={{
-                                    height: '40px',
+                                    height: 'velpx',
                                     color: 'white',
                                     listStyle: 'none',
                                     display: 'flex',
@@ -312,11 +312,11 @@ const Welcome = () => {
                                     padding: '0',
                                     fontSize: 'small'
                                 }}>
-                                    <li style={{ padding: '0 20px', lineHeight: '40px' }}>問題</li>
-                                    <li style={{ padding: '0 20px', lineHeight: '40px' }}>出力</li>
-                                    <li style={{ padding: '0 20px', lineHeight: '40px' }}>デバッグコンソール</li>
-                                    <li style={{ padding: '0 20px', lineHeight: '40px', borderBottom: '1px solid white' }}>ターミナル</li> {/* アンダーラインを追加 */}
-                                    <li style={{ padding: '0 20px', lineHeight: '40px' }}>ポート</li>
+                                    <li style={{ padding: '0 20px', lineHeight: 'velpx' }}>問題</li>
+                                    <li style={{ padding: '0 20px', lineHeight: 'velpx' }}>出力</li>
+                                    <li style={{ padding: '0 20px', lineHeight: 'velpx' }}>デバッグコンソール</li>
+                                    <li style={{ padding: '0 20px', lineHeight: 'velpx', borderBottom: '1px solid white' }}>ターミナル</li> {/* アンダーラインを追加 */}
+                                    <li style={{ padding: '0 20px', lineHeight: 'velpx' }}>ポート</li>
                                 </ul>
                                 {!isCompiledSuccess && (
                                     <>

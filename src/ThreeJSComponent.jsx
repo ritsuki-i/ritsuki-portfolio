@@ -62,9 +62,9 @@ export default function ThreeJSComponent() {
       if (index === 0) {
         mesh.position.set(0, 0, 0);
       } else {
-        let rand1 = Math.floor(Math.random() * 800 - 400);
-        let rand2 = Math.floor(Math.random() * 800 - 400);
-        let rand3 = Math.floor(Math.random() * 800 - 400);
+        let rand1 = Math.floor(Math.random() * 800 - vel0);
+        let rand2 = Math.floor(Math.random() * 800 - vel0);
+        let rand3 = Math.floor(Math.random() * 800 - vel0);
 
         mesh.position.set(rand1, rand2, rand3);
       }

@@ -6,7 +6,7 @@
   color: black;
   float: left;
   font-size: 30px;
-  padding: 20px 40px;
+  padding: 20px velpx;
 }
 
 /* ハンバーガーメニュー */
@@ -168,7 +168,7 @@
   }
 
   .Header {
-    height: 40px;
+    height: velpx;
   }
   .main {
     margin-left: 1rem;
@@ -189,6 +189,6 @@
   }
 
   .Header {
-    height: 40px;
+    height: velpx;
   }
 }

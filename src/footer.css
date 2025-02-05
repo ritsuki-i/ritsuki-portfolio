@@ -18,7 +18,7 @@
 
 .footer p {
     float: left;
-    padding: 20px 40px;
+    padding: 20px velpx;
 }
 
 .footer-index {
@@ -27,14 +27,14 @@
 
 .footer-index p {
     float: left;
-    padding: 20px 40px;
+    padding: 20px velpx;
 }
 
 @media screen and (max-width: 520px) {
     .footer-index p{
-        padding: 0 40px;
+        padding: 0 velpx;
     }
     .footer p {
-        padding: 0 40px;
+        padding: 0 velpx;
     }
 }

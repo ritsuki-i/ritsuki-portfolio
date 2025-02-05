@@ -59,8 +59,19 @@
       "githuburl":"https://github.com/ritsuki-i/status-code-quiz/",
       "path": "img/StatusCode-icon.png",
       "script": "ゲームでHTTPステータスコードを勉強できるWebアプリケーション",
-      "technology": "React Material-UI Bootstrap GitHub-Pages Firebase",
+      "technology": "React Material-UI Bootstrap GitHub-Pages",
       "background": "サークル内で遊べるボドゲとしてHTTPステータスコードかるたを作成したが、それをアプリ化、また楽しく学習できるプラットフォームが欲しかったため制作した。"
+    }
+    ,
+    {
+      "name": "Visual Stack",
+      "tag": "Web Game",
+      "url": "https://visualstack.vercel.app/",
+      "githuburl":"https://github.com/ritsuki-i/visualstack/",
+      "path": "img/VisualStack.png",
+      "script": "実際の「手」を認識して実際にブロックを掴んで積み上げる新感覚ARWebゲーム",
+      "technology": "Next.js Unity Vercel MediaPipe",
+      "background": "ハンドトラッキングの技術を用いてWebカメラで認識した手の位置をUnity上で出現させて動かすゲームはとても新鮮で今までにないものだと感じ制作した。"
     }
     
   ],
