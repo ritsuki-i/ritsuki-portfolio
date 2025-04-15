@@ -75,7 +75,18 @@
       "Year": "2024 Oct",
       "Content": "What's this error?",
       "detail": "クイズやかるたを通じてHTTPステータスコードを勉強できるWebアプリケーション"
+    },
+    {
+      "Year": "2025 Feb",
+      "Content": "Visual Stack",
+      "detail": "実際の「手」を認識して実際にブロックを掴んで積み上げる新感覚ARWebゲーム"
+    },
+    {
+      "Year": "2025 Apr",
+      "Content": "PiPi Room",
+      "detail": "ユーザが作品や記事、コメントを投稿し、管理できるプラットフォーム"
     }
+
   ],
   "Systems": [
     {
