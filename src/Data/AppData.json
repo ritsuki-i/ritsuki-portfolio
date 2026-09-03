@@ -100,7 +100,7 @@
     {
       "name": "AirCursor",
       "tag": "React Library",
-      "url": "https://ritsuki-i.github.io/HandTrackingComponent/",
+      "url": "https://ritsuki-i.github.io/AirCursor/",
       "githuburl":"https://github.com/ritsuki-i/AirCursor",
       "path": "img/AirCursor-icon.png",
       "script": "マウスを使わずに手のモーションのみでPCを操作できるReactコンポーネント",
