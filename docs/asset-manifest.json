@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ritsuki-portfolio/static/css/main.44c71f7e.css",
+    "main.js": "/ritsuki-portfolio/static/js/main.fd82d1c6.js",
+    "index.html": "/ritsuki-portfolio/index.html",
+    "main.44c71f7e.css.map": "/ritsuki-portfolio/static/css/main.44c71f7e.css.map",
+    "main.fd82d1c6.js.map": "/ritsuki-portfolio/static/js/main.fd82d1c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44c71f7e.css",
+    "static/js/main.fd82d1c6.js"
+  ]
+}
