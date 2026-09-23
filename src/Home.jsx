@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
-import { ArrowDownRight, ArrowUpRight, Check, Copy, Github, Mail, Maximize2, Menu, X } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Github, Mail, Maximize2 } from "lucide-react";
 import AppData from "./Data/AppData.json";
 import AboutJourney from "./AboutJourney.jsx";
+import HeroTime from "./HeroTime.jsx";
 import "./Home.css";
 
 // Newest first, by the date each work was last rebuilt.
@@ -51,47 +52,6 @@ function ContactSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="hero-visual">
-      <svg className="hero-sky" viewBox="-100 -80 1200 960" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="dusk-sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#d3cde4" />
-            <stop offset=".38" stopColor="#e6dce7" />
-            <stop offset=".58" stopColor="#f1e1df" />
-            <stop offset=".78" stopColor="#f6ebe2" />
-            <stop offset="1" stopColor="#f8f7f1" />
-          </linearGradient>
-          <linearGradient id="far-city" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#c6bcd8" stopOpacity=".95" />
-            <stop offset="1" stopColor="#efe3e3" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="near-city" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#b3a8c9" stopOpacity=".9" />
-            <stop offset="1" stopColor="#ecdfe2" stopOpacity="0" />
-          </linearGradient>
-          <radialGradient id="moon-halo">
-            <stop offset="0" stopColor="#ffffff" stopOpacity=".7" />
-            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
-          </radialGradient>
-          <filter id="soft-light" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" /></filter>
-        </defs>
-        <rect x="-100" y="-80" width="1200" height="960" fill="url(#dusk-sky)" />
-        <circle cx="830" cy="150" r="80" fill="url(#moon-halo)" />
-        <circle cx="830" cy="150" r="26" fill="#e4e1e8" />
-                <path fill="url(#far-city)" d="M-100 560 V330 h40 v-40 h26 v60 h34 v-90 h22 v-24 h14 v24 h20 v120 h38 v-70 h30 v90 h44 v-60 h26 v-30 h18 v200 h560 v-190 h30 v-50 h24 v80 h36 v-120 h16 v-20 h12 v20 h18 v150 h40 v-70 h32 v100 h44 v-160 h26 v40 h24 v250 Z" />
-        <path fill="url(#near-city)" d="M-100 580 V400 h52 v-50 h30 v80 h42 v-40 h36 v70 h50 v-30 h34 v150 h640 v-150 h44 v-60 h30 v40 h38 v-100 h28 v130 h46 v-50 h40 v60 h36 v-60 h22 v190 Z" />
-        <g className="hero-city-lights" filter="url(#soft-light)">
-          <circle cx="-58" cy="380" r="3" /><circle cx="-12" cy="420" r="2.5" /><circle cx="38" cy="362" r="3" /><circle cx="96" cy="448" r="2.5" /><circle cx="142" cy="406" r="3" />
-          <circle cx="862" cy="330" r="3" /><circle cx="928" cy="360" r="2.5" /><circle cx="968" cy="300" r="3" /><circle cx="1012" cy="410" r="3" /><circle cx="1050" cy="352" r="2.5" /><circle cx="1086" cy="430" r="3" />
-        </g>
-      </svg>
-      <img className="room-art" src={asset("img/hero-curiosity-room-cutout.png")} alt="観葉植物に囲まれた部屋で、パソコンに向かって考えごとをしているイラスト" />
-    </div>
   );
 }
 
@@ -195,7 +155,7 @@ export default function Home() {
     <div className="portfolio" id="top">
       <header className="site-header">
         <a className="brand" href="#top" onClick={closeMenu} aria-label="Ritsuki Ishikawa ホームへ">RITSUKI ISHIKAWA</a>
-        <button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}>{menuOpen ? <X size={25} /> : <Menu size={25} />}</button>
+        <button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}><span className="menu-icon" aria-hidden="true"><i /><i /><i /></span></button>
         <nav id="primary-navigation" className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="メインナビゲーション">
           <a href="#works" onClick={closeMenu}>WORKS <span>01</span></a>
           <a href="#about" onClick={closeMenu}>ABOUT <span>02</span></a>
@@ -206,25 +166,7 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-main">
-            <div className="hero-content">
-              <div className="eyebrow"><span className="status-dot" /> RITSUKI ISHIKAWA / PORTFOLIO</div>
-              <h1 id="hero-title">Curiosity <em>×</em> Impact</h1>
-              <p className="hero-japanese">その交点に、まだ見ぬ景色がある。</p>
-              <p className="hero-copy">人が触れて「面白い」と感じる体験を、実際に役立つ技術へ。<br />機械学習の研究と、Web UI の開発をしています。</p>
-              <a className="round-link hero-link-desktop" href="#works"><span>作品を見る</span><ArrowDownRight size={19} /></a>
-              <div className="hero-principles" aria-label="ものづくりの3つの軸">
-                <div><span>01</span><strong>IDEA</strong><p>好奇心から、<br />つくる</p></div>
-                <div><span>02</span><strong>TECH</strong><p>技術で、<br />広げる</p></div>
-                <div><span>03</span><strong>IMPACT</strong><p>誰かの毎日を、<br />少しでもよくする</p></div>
-              </div>
-            </div>
-            <HeroVisual />
-            <a className="round-link hero-link-mobile" href="#works"><span>作品を見る</span><ArrowDownRight size={19} /></a>
-          </div>
-          <div className="hero-bottom"><span>SCROLL TO EXPLORE ↓</span><span>RESEARCH &amp; WEB DEVELOPMENT</span></div>
-        </section>
+        <HeroTime />
 
         <section className="works section-wrap" id="works" aria-labelledby="works-title">
           <div className="works-effect" aria-hidden="true">
