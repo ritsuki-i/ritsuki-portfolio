@@ -88,7 +88,6 @@ export default function HeroTime() {
   const heroRef = useRef(null);
   const visualRef = useRef(null);
   const ringRef = useRef(null);
-  const lensWorldRef = useRef(null);
   const lensSkyRef = useRef(null);
   const titleRef = useRef(null);
   const enterNextRef = useRef(() => {});
@@ -99,7 +98,8 @@ export default function HeroTime() {
     const ring = ringRef.current;
     // Lens variables go only on the three lens elements, so a moving lens restyles just those subtrees.
     const title = titleRef.current;
-    const lensTargets = [lensWorldRef.current, lensSkyRef.current, ring, title];
+    // The visual carries them for both layers: the lens images are clipped to the circle and the base images get a hole there.
+    const lensTargets = [visual, lensSkyRef.current, ring, title];
     const setVar = (name, value) => lensTargets.forEach((el) => el.style.setProperty(name, value));
     const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     // The sticky header sits over the hero's world, so it needs to know the time of day and whether the hero is under it.
@@ -210,6 +210,8 @@ export default function HeroTime() {
       if (s.wipe) {
         const t = Math.min(1, (now - s.wipe.start) / WIPE_MS);
         r = s.wipe.from + (s.wipe.to - s.wipe.from) * easeInOutCubic(t);
+        // Let the held-down colour boost settle while the circle grows, so the lens matches the plain base when they swap.
+        s.hold = Math.max(0, 1 - t * 1.4);
         active = true;
         if (t >= 1) {
           promote(now);
@@ -312,6 +314,7 @@ export default function HeroTime() {
     // Hold the page behind the loader until every world is decoded and the title fonts are in, so promoting an
     // image never flashes and no fallback font is ever seen. A timeout keeps a slow asset from blocking the page.
     let cancelled = false;
+    let revealed = false;
     const hintTimers = [];
     root.classList.add("is-loading");
     const assets = [
@@ -325,7 +328,8 @@ export default function HeroTime() {
     }));
 
     const reveal = () => {
-      if (cancelled || hero.classList.contains("is-ready")) return;
+      if (cancelled || revealed) return;
+      revealed = true;
       hero.classList.add("is-ready");
       root.classList.remove("is-loading");
       measure();
@@ -407,7 +411,7 @@ export default function HeroTime() {
           {TIMES.map((time) => (
             <img key={time} className={`room-art base-art base-${time}`} src={asset(`img/hero/${time}.webp`)} alt={ALT[time]} draggable="false" />
           ))}
-          <div className="lens-world" ref={lensWorldRef} aria-hidden="true">
+          <div className="lens-world" aria-hidden="true">
             {TIMES.map((time) => (
               <img key={time} className={`room-art lens-art lens-${time}`} src={asset(`img/hero/${time}.webp`)} alt="" draggable="false" />
             ))}

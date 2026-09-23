@@ -57,19 +57,22 @@
 
 /* Room images: the three worlds share one box, so they overlap pixel for pixel. */
 .hero-time .room-art { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-.hero-time .base-art { z-index: 1; opacity: 0; filter: drop-shadow(0 28px 24px #655d4812); }
+/* Inside the lens only the next world is drawn: the base gets a hole there, so its soft shadows and plant edges
+   never show through the lens and nothing changes at the moment the two swap. */
+.hero-time .base-art { z-index: 1; opacity: 0; filter: drop-shadow(0 28px 24px #655d4812); -webkit-mask-image: radial-gradient(circle var(--lr) at calc(var(--lx) - var(--vx)) calc(var(--ly) - var(--vy)), #0000 99%, #000 100%); mask-image: radial-gradient(circle var(--lr) at calc(var(--lx) - var(--vx)) calc(var(--ly) - var(--vy)), #0000 99%, #000 100%); }
 .hero-time[data-time="day"] .base-day, .hero-time[data-time="evening"] .base-evening, .hero-time[data-time="night"] .base-night { opacity: 1; }
 .hero-time.is-crossfade .base-art { transition: opacity .8s ease; }
 
 /* The lens: the next world, clipped to a circle at exactly the same position. */
 .lens-world { position: absolute; z-index: 2; inset: 0; clip-path: circle(var(--lr) at calc(var(--lx) - var(--vx)) calc(var(--ly) - var(--vy))); pointer-events: none; }
-.hero-time .lens-art { opacity: 0; filter: saturate(calc(1 + var(--hold) * .18)) brightness(calc(1 + var(--hold) * .05)); }
+.hero-time .lens-art { opacity: 0; filter: drop-shadow(0 28px 24px #655d4812) saturate(calc(1 + var(--hold) * .18)) brightness(calc(1 + var(--hold) * .05)); }
 .hero-time[data-time="day"] .lens-evening, .hero-time[data-time="evening"] .lens-night, .hero-time[data-time="night"] .lens-day { opacity: 1; }
 
 .lens-sky { position: absolute; z-index: 1; inset: 0; clip-path: circle(var(--lr) at var(--lx) var(--ly)); opacity: .3; transition: opacity .45s ease; pointer-events: none; }
 .lens-sky-layer { position: absolute; inset: 0; opacity: 0; }
 .hero-time[data-time="day"] .lens-sky-evening, .hero-time[data-time="evening"] .lens-sky-night, .hero-time[data-time="night"] .lens-sky-day { opacity: 1; }
-.hero-time.is-wiping .lens-sky { opacity: 1; }
+/* The surroundings cross-fade on their own during the wipe, so the lens tint bows out instead of vanishing at the swap. */
+.hero-time.is-wiping .lens-sky { opacity: 0; transition-duration: .7s; }
 
 .lens-ring { position: absolute; z-index: 3; top: 0; left: 0; width: calc(var(--lens-r) * 2); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 30% 24%, #ffffff24, #ffffff00 42%); box-shadow: 0 0 0 1px #ffffffc4, 0 0 0 2px #282d280d, inset 0 0 24px #ffffff2e, 0 8px 32px #2b2a2012; transform: translate3d(calc(var(--lx) - var(--lens-r)), calc(var(--ly) - var(--lens-r)), 0) scale(var(--ring-s)); transition: opacity .5s ease; pointer-events: none; -webkit-user-select: none; user-select: none; }
 .hero-time.is-wiping .lens-ring { opacity: 0; transition-duration: .35s; }
@@ -104,7 +107,8 @@
 .title-face { grid-area: 1 / 1; opacity: 0; transition: opacity 1s ease; }
 .hero-time[data-ambient="day"] .title-base.title-day, .hero-time[data-ambient="evening"] .title-base.title-evening, .hero-time[data-ambient="night"] .title-base.title-night { opacity: 1; }
 .title-base { -webkit-mask-image: radial-gradient(circle var(--lr) at calc(var(--lx) - var(--tx)) calc(var(--ly) - var(--ty)), #0000 99%, #000 100%); mask-image: radial-gradient(circle var(--lr) at calc(var(--lx) - var(--tx)) calc(var(--ly) - var(--ty)), #0000 99%, #000 100%); }
-.title-lens { clip-path: circle(var(--lr) at calc(var(--lx) - var(--tx)) calc(var(--ly) - var(--ty))); transition: none; }
+.title-lens { clip-path: circle(var(--lr) at calc(var(--lx) - var(--tx)) calc(var(--ly) - var(--ty))); transition: text-shadow .7s ease; }
+.hero-time.is-wiping .title-lens.title-face { text-shadow: none; }
 .hero-time[data-time="day"] .lens-title-evening, .hero-time[data-time="evening"] .lens-title-night, .hero-time[data-time="night"] .lens-title-day { opacity: 1; }
 .hero-time .title-day { color: #2c4a66; }
 .hero-time .title-day em { color: #e8793a; }
