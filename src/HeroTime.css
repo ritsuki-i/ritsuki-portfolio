@@ -108,10 +108,23 @@
 .hero-time[data-time="day"] .lens-title-evening, .hero-time[data-time="evening"] .lens-title-night, .hero-time[data-time="night"] .lens-title-day { opacity: 1; }
 .hero-time .title-day { color: #2c4a66; }
 .hero-time .title-day em { color: #e8793a; }
-.hero-time .title-evening { color: #553761; font-family: Fraunces, 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 600; letter-spacing: -.045em; }
+.hero-time .title-evening { color: #553761; font-family: Fraunces, Georgia, 'Times New Roman', serif; font-weight: 600; letter-spacing: -.045em; }
 .hero-time .title-evening em { color: #3f9d86; }
-.hero-time .title-night { color: #d3dcff; font-family: 'Cormorant Garamond', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 1.12em; font-style: italic; font-weight: 600; letter-spacing: -.02em; }
+.hero-time .title-night { color: #d3dcff; font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif; font-style: italic; font-weight: 600; letter-spacing: -.02em; }
 .hero-time .title-night em { color: #f4b24e; font-style: normal; }
+
+/* Loader: shown until the three worlds are decoded and the title fonts are ready. */
+html.is-loading { overflow: hidden; }
+.page-loader { position: fixed; z-index: 200; inset: 0; display: grid; place-content: center; justify-items: center; gap: 22px; --progress: 0; background: #f8f7f1; transition: opacity .8s ease, visibility 0s linear .8s; }
+.page-loader.is-leaving { visibility: hidden; opacity: 0; }
+.loader-ring { width: 54px; height: 54px; overflow: visible; transform: rotate(-90deg); }
+.loader-track, .loader-arc { fill: none; stroke-width: 2.8; }
+.loader-track { stroke: #282d2814; }
+.loader-arc { stroke: #d98568; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--progress)); transition: stroke-dashoffset .4s ease; }
+.loader-name { color: #6e7768; font-size: 10px; font-weight: 700; letter-spacing: .24em; animation: loader-breathe 1.8s ease-in-out infinite alternate; }
+@keyframes loader-breathe { from { opacity: .45; } to { opacity: 1; } }
+/* The hero's entrance waits for the loader to lift. */
+.hero-time:not(.is-ready) .hero-content > *, .hero-time:not(.is-ready) .hero-link-mobile, .hero-time:not(.is-ready) .hero-bottom { animation-play-state: paused; }
 
 /* Keyboard access: the same transition, reachable without a pointer. */
 .hero-time-enter { position: absolute; z-index: 5; right: var(--hero-pad, 24px); bottom: 44px; padding: 8px 14px; border: 1px solid #282d2833; border-radius: 999px; background: #f8f7f1e6; color: #282d28; font-size: 11px; font-weight: 700; clip-path: inset(50%); opacity: 0; }

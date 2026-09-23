@@ -25,6 +25,9 @@ const HOLD_MS = 1000;
 const WIPE_MS = 1150;
 const REOPEN_MS = 520;
 const HINT_KEY = "hero-lens-hint-seen";
+const LOAD_TIMEOUT_MS = 10000;
+// The title faces, loaded before the hero is revealed so no fallback font ever shows.
+const TITLE_FONTS = ["600 40px Manrope", "600 40px Fraunces", "italic 600 40px \"Cormorant Garamond\""];
 
 // Local time only picks the first world; after that the visitor's choice is kept.
 const initialTime = () => {
@@ -80,6 +83,8 @@ function Ambient() {
 
 export default function HeroTime() {
   const [firstTime] = useState(initialTime);
+  const [loader, setLoader] = useState("visible");
+  const loaderRef = useRef(null);
   const heroRef = useRef(null);
   const visualRef = useRef(null);
   const ringRef = useRef(null);
@@ -110,8 +115,6 @@ export default function HeroTime() {
       moved: false, pointerId: null, pointerType: "", downX: 0, downY: 0,
     };
 
-    // Decode every world up front so promoting one to the base layer never flashes.
-    hero.querySelectorAll("img").forEach((img) => img.decode?.().catch(() => {}));
 
     const measure = () => {
       const heroBox = hero.getBoundingClientRect();
@@ -305,22 +308,49 @@ export default function HeroTime() {
     resizeObserver.observe(visual);
     resizeObserver.observe(title);
     measure();
-    s.openAnim = { start: performance.now() + 700, from: 0, to: 1, dur: reduceQuery.matches ? 1 : 700 };
-    schedule();
 
-    // First visit only: a short, quiet hint, then it never shows again.
-    let hintTimers = [];
-    let seen = true;
-    try { seen = window.localStorage.getItem(HINT_KEY) === "1"; } catch { seen = true; }
-    if (!seen) {
-      hintTimers.push(setTimeout(() => hero.classList.add("show-hint"), 2400));
-      hintTimers.push(setTimeout(() => {
-        hero.classList.remove("show-hint");
-        try { window.localStorage.setItem(HINT_KEY, "1"); } catch { /* storage unavailable */ }
-      }, 5200));
-    }
+    // Hold the page behind the loader until every world is decoded and the title fonts are in, so promoting an
+    // image never flashes and no fallback font is ever seen. A timeout keeps a slow asset from blocking the page.
+    let cancelled = false;
+    const hintTimers = [];
+    root.classList.add("is-loading");
+    const assets = [
+      ...[...hero.querySelectorAll("img")].map((img) => (img.decode ? img.decode() : Promise.resolve()).catch(() => {})),
+      ...TITLE_FONTS.map((font) => (document.fonts ? document.fonts.load(font) : Promise.resolve()).catch(() => {})),
+    ];
+    let loaded = 0;
+    assets.forEach((asset) => asset.then(() => {
+      loaded += 1;
+      loaderRef.current?.style.setProperty("--progress", `${loaded / assets.length}`);
+    }));
+
+    const reveal = () => {
+      if (cancelled || hero.classList.contains("is-ready")) return;
+      hero.classList.add("is-ready");
+      root.classList.remove("is-loading");
+      measure();
+      setLoader("leaving");
+      hintTimers.push(setTimeout(() => setLoader("gone"), 900));
+      s.openAnim = { start: performance.now() + 700, from: 0, to: 1, dur: reduceQuery.matches ? 1 : 700 };
+      schedule();
+
+      // First visit only: a short, quiet hint, then it never shows again.
+      let seen = true;
+      try { seen = window.localStorage.getItem(HINT_KEY) === "1"; } catch { seen = true; }
+      if (!seen) {
+        hintTimers.push(setTimeout(() => hero.classList.add("show-hint"), 2400));
+        hintTimers.push(setTimeout(() => {
+          hero.classList.remove("show-hint");
+          try { window.localStorage.setItem(HINT_KEY, "1"); } catch { /* storage unavailable */ }
+        }, 5200));
+      }
+    };
+    Promise.all(assets).then(reveal);
+    hintTimers.push(setTimeout(reveal, LOAD_TIMEOUT_MS));
 
     return () => {
+      cancelled = true;
+      root.classList.remove("is-loading");
       cancelAnimationFrame(s.raf);
       resizeObserver.disconnect();
       headerObserver.disconnect();
@@ -337,6 +367,14 @@ export default function HeroTime() {
   }, []);
 
   return (
+    <>
+    {loader !== "gone" && (
+      <div className={`page-loader ${loader === "leaving" ? "is-leaving" : ""}`} ref={loaderRef} role="status" aria-live="polite">
+        <svg className="loader-ring" viewBox="0 0 100 100" aria-hidden="true"><circle className="loader-track" cx="50" cy="50" r="46" /><circle className="loader-arc" cx="50" cy="50" r="46" pathLength="1" /></svg>
+        <span className="loader-name">RITSUKI ISHIKAWA</span>
+        <span className="visually-hidden">読み込み中</span>
+      </div>
+    )}
     <section className="hero hero-time" ref={heroRef} data-time={firstTime} data-ambient={firstTime} aria-labelledby="hero-title">
       <div className="hero-ground" aria-hidden="true" />
       <Ambient />
@@ -394,5 +432,6 @@ export default function HeroTime() {
 
       <div className="hero-bottom"><span>SCROLL TO EXPLORE ↓</span><span>RESEARCH &amp; WEB DEVELOPMENT</span></div>
     </section>
+    </>
   );
 }
