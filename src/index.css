@@ -1,23 +1,10 @@
-/* 共通部分 */
-body {
-  font-family: "コーポレート明朝 ver2", serif;
-  background: linear-gradient(
-    rgb(255, 157, 0),
-    white,
-    white,
-    white,
-    white,
-    rgb(255, 157, 0)
-  );
-}
-
-.title {
-  padding-left: 0.3em;
-  border-left: 0.3em solid rgb(0, 0, 0);
-}
-
-@media screen and (max-width: 520px) {
-  .title {
-    font-size: 20px;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root { font-family: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; color: #282d28; background: #f8f7f1; font-synthesis: none; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+button { font: inherit; }
+::selection { background: #efc4b1; color: #282d28; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

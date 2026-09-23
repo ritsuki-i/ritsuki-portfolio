@@ -1,0 +1,49 @@
+.journey { padding-top: 0; padding-bottom: clamp(100px, 11vw, 170px); }
+.journey-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding-top: 56px; border-top: 1px solid #cdd3c4; }
+.journey-heading h3 { max-width: 840px; margin: 21px 0 0; font: 700 clamp(38px, 5vw, 74px)/1.12 Manrope, 'Yu Gothic', sans-serif; letter-spacing: -.065em; }
+.journey-heading h3 em { font-style: normal; color: #d77d5f; }
+.journey-heading p { max-width: 310px; margin: 0 0 6px; color: #697166; font-size: 13px; line-height: 1.85; }
+.journey-nav { display: flex; flex-wrap: wrap; gap: 9px; margin: 40px 0 68px; }
+.journey-nav a { display: inline-flex; align-items: center; gap: 12px; min-height: 41px; padding: 9px 15px; border: 1px solid #c7cabb; border-radius: 100px; color: #454c42; font-size: 12px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.journey-nav a:hover, .journey-nav a:focus-visible { background: #e6c4b4; border-color: #e6c4b4; color: #343a32; transform: translateY(-2px); }
+.journey-nav a:focus-visible, .journey-item summary:focus-visible { outline: 2px solid #d77d5f; outline-offset: 3px; }
+.journey-groups { display: grid; gap: 84px; }
+.journey-group { display: grid; grid-template-columns: minmax(230px, .36fr) minmax(0, 1fr); gap: clamp(25px, 5vw, 80px); scroll-margin-top: 32px; }
+.journey-group-heading { display: grid; grid-template-columns: 48px 1fr; gap: 4px 12px; align-content: start; }
+.journey-number { color: #d77d5f; font-size: 10px; font-weight: 700; letter-spacing: .08em; padding-top: 3px; }
+.journey-english { color: #858c7f; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.journey-group h4 { margin: 10px 0 0; font-size: clamp(18px, 2vw, 27px); font-weight: 600; letter-spacing: -.03em; }
+.journey-items { min-width: 0; border-top: 1px solid #c4cbbd; }
+.journey-item { border-bottom: 1px solid #d1d6ca; }
+.journey-item summary { display: grid; grid-template-columns: 105px minmax(0, 1fr) 28px; align-items: center; gap: 18px; min-height: 76px; padding: 17px 8px; list-style: none; cursor: pointer; transition: background .2s, padding .2s; }
+.journey-item summary::-webkit-details-marker { display: none; }
+.journey-item summary:hover, .journey-item[open] summary { background: #e6eadc; padding-left: 17px; }
+.journey-year { color: #777f70; font-size: 11px; letter-spacing: .03em; white-space: nowrap; }
+.journey-item-title { font-size: 14px; font-weight: 600; line-height: 1.65; overflow-wrap: anywhere; }
+.journey-plus { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #c1c8b8; border-radius: 50%; color: #d77d5f; font-size: 19px; font-weight: 300; line-height: 1; transition: transform .2s, background .2s, color .2s; }
+.journey-item[open] .journey-plus { transform: rotate(45deg); background: #e6c4b4; color: #343a32; }
+.journey-detail { padding: 0 55px 24px 131px; color: #697166; }
+.journey-detail p { max-width: 760px; margin: 0; font-size: 13px; line-height: 1.95; }
+
+@media (max-width: 850px) {
+  .journey-heading { display: block; }
+  .journey-heading p { margin-top: 25px; }
+  .journey-group { grid-template-columns: 1fr; gap: 20px; }
+  .journey-group-heading { align-items: center; }
+  }
+@media (max-width: 600px) {
+  .journey-heading { padding-top: 40px; }
+  .journey-heading h3 { font-size: clamp(36px, 9vw, 54px); }
+  .journey-nav { flex-wrap: nowrap; overflow-x: auto; margin: 30px -24px 60px; padding: 2px 24px 10px; scrollbar-width: thin; }
+  .journey-nav a { flex: none; }
+  .journey-groups { gap: 66px; }
+  .journey-item summary { grid-template-columns: 1fr 26px; gap: 4px 12px; min-height: 76px; padding: 15px 4px; }
+  .journey-year { grid-column: 1; font-size: 10px; }
+  .journey-item-title { grid-column: 1; font-size: 13px; }
+  .journey-plus { grid-column: 2; grid-row: 1 / span 2; }
+  .journey-detail { padding: 0 36px 22px 4px; }
+  .journey-detail p { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-nav a, .journey-item summary, .journey-plus { transition: none; }
+}
